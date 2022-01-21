@@ -1,0 +1,16 @@
+@import url('../../utils/base.css');
+
+header {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-bottom: 0.5px solid var(--dark-grey);
+    padding: 1.2rem 0.9rem 1.2rem 0.9rem;
+    font-weight: 800;
+    z-index: 100;
+}

@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c0cfd222.css",
+    "main.js": "/static/js/main.ba9d8e85.js",
+    "static/media/image-category-page-preview.png": "/static/media/image-category-page-preview.6e8830d475e04b7b9627.png",
+    "static/media/image-best-gear.jpg": "/static/media/image-best-gear.28ded79e4776ecd29f87.jpg",
+    "static/media/image-header.jpg": "/static/media/image-header.d200a3583e72c7981f46.jpg",
+    "static/media/image-speaker-zx7.jpg": "/static/media/image-speaker-zx7.82dc33d645ab18cf1ac1.jpg",
+    "static/media/image-earphones-yx1.jpg": "/static/media/image-earphones-yx1.48e16a44bd58ed3be41e.jpg",
+    "static/media/icon-instagram.svg": "/static/media/icon-instagram.8d0df55595e16bac2d486efccdc6b4b3.svg",
+    "static/media/icon-cart.svg": "/static/media/icon-cart.5e1893a62995fc7b443abe7bee68063e.svg",
+    "index.html": "/index.html",
+    "static/media/icon-twitter.svg": "/static/media/icon-twitter.5dc7711ff2433b3b89ee7742a407e3bd.svg",
+    "static/media/icon-facebook.svg": "/static/media/icon-facebook.e9773e52bc64ea377cb95af7ccb6877e.svg",
+    "static/media/icon-arrow-right.svg": "/static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
+    "static/media/icon-hamburger.svg": "/static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
+    "main.c0cfd222.css.map": "/static/css/main.c0cfd222.css.map",
+    "main.ba9d8e85.js.map": "/static/js/main.ba9d8e85.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0cfd222.css",
+    "static/js/main.ba9d8e85.js"
+  ]
+}

@@ -1,0 +1,33 @@
+@import url('../../utils/base.css');
+
+.zx7-card {
+    position: relative;
+    z-index: 100;
+}
+
+.zx7-card img {
+    max-width: 90vw;
+    z-index: 2;
+    border-radius: 25px;
+}
+
+.text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    bottom: 50%;
+    transform: translateY(50%);
+    padding-left: 2rem;
+}
+
+.text div {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.text button {
+    font-size: 1rem;
+    font-weight: 600;
+}

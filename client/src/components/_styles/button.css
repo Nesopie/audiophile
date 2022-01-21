@@ -1,0 +1,29 @@
+@import url('../../utils/base.css');
+
+.button {
+    padding: 1rem 1.6rem;
+    outline: 0;
+    border: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    width: fit-content;
+}
+
+.orange { 
+    background: var(--dark-orange);
+    color: var(--white);
+}
+
+.orange:hover {
+    background: var(--light-orange);
+}
+
+.black {
+    color: white;
+    background: black;
+}
+
+.transparent {
+    background-color: rgba(0,0,0,0);
+    border: 2px solid black;
+}

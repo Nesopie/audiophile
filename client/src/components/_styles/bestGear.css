@@ -1,0 +1,45 @@
+@import url('../../utils/base.css');
+
+.best-gear {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    margin: 7rem auto;
+    text-align: center;
+    gap: 3rem;
+
+}
+
+.best-gear img {
+    max-width: 90vw;
+    border-radius: 25px;
+}
+
+.best-gear div {
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.best-gear div p {
+    font-size: 1.8rem;
+}
+
+.best-gear span {
+    color: var(--dark-orange);
+}
+
+.best-gear article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.best-gear article > div:last-child {
+    font-size: 0.9rem;
+    color: var(--dark-grey);
+    letter-spacing: 0.5px;
+    padding: 0 2vw;
+    font-weight: 600;
+    line-height: 1.3rem;
+}

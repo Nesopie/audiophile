@@ -1,0 +1,37 @@
+@import url('../../utils/base.css');
+
+.yx1-card {
+    position: relative;
+    z-index: 100;
+    background-color: var(--light-medium-grey);
+    border-radius: 25px;;
+}
+
+.yx1-card img{
+    max-width: 90vw;
+    z-index: 2;
+    border-radius: 25px;
+    visibility: hidden;
+}
+
+.yx1-card > div > div {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    bottom: 50%;
+    transform: translateY(50%);   
+    margin-left: 2rem;
+}
+
+.yx1-card > div > div > div {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.yx1-card button {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+}

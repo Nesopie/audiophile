@@ -1,0 +1,41 @@
+@import url('../../utils/base.css');
+
+.carousel {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.carousel div img{
+    max-width: 100vw;
+}
+
+.carousel-about {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 0 1.5rem;
+}
+
+#carousel-text {
+    color: var(--dark-grey);
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+    font-weight: 200;
+}
+
+#carousel-product {
+    color: var(--white);
+    font-size: 2.4rem;
+}
+
+#carousel-description {
+    color: var(--dark-grey);
+    font-size: 1rem;
+    font-weight: 400;
+}

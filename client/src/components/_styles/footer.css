@@ -1,0 +1,57 @@
+@import url('../../utils/base.css');
+
+footer {
+    position: relative;
+    width: 100vw;
+    padding: 1rem 1rem 0 1rem;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-decoration {
+    position: absolute;
+    height: 5px;
+    background: var(--dark-orange);
+    width: 8rem;
+    top: 0;
+}
+
+footer h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+footer > div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.links-container a{
+    display: block;
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    margin: 2rem 0;
+    letter-spacing: 2px;
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.5rem;
+    gap: 1rem;
+    font-size: 1.1rem;
+    color: var(--dark-grey);
+}
+.socials {
+    margin: 4rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
