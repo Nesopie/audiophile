@@ -6,11 +6,31 @@ header {
     display: flex;
     background-color: rgba(0,0,0,0);
     color: white;
+    border-bottom: 0.5px solid var(--dark-grey);
+    font-weight: 800;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+#black-header {
+    position: relative;
+    background-color: rgba(0,0,0,1);
+}
+
+header > div:first-child {
+    display: flex;
+    padding: 1.6rem 0.9rem 1.6rem 0.9rem; 
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    border-bottom: 0.5px solid var(--dark-grey);
-    padding: 1.2rem 0.9rem 1.2rem 0.9rem;
-    font-weight: 800;
-    z-index: 100;
+}
+
+header span {
+    background-color: rgba(0,0,0,1);
+    padding: 1.6rem 0.9rem 1.6rem 0.9rem; 
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }

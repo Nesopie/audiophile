@@ -1,0 +1,20 @@
+@import url('../../utils/base.css');
+
+.product-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 6rem;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    width: 90vw;
+    gap: 6rem;
+}

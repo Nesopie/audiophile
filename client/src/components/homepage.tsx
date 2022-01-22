@@ -6,15 +6,19 @@ import ProductDisplay from './productDisplay';
 import BestGear from './bestGear';
 import Footer from './footer';
 
+import './_styles/homepage.css';
+
 const Homepage = (): JSX.Element => {
     return (
         <div style={{position: "relative"}}>
-            <Header />
+            <Header category={undefined}/>
             <Carousel />
-            <ProductCategory />
-            <ProductDisplay />
-            <BestGear />
-            <Footer />
+            <div className="homepage">
+                <ProductCategory />
+                <ProductDisplay />
+                <BestGear />
+                <Footer />
+            </div>
         </div>
     );
 }

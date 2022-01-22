@@ -13,6 +13,7 @@ const YX1Card = (): JSX.Element => {
                     <Button 
                         buttonLabel='SEE PRODUCT'
                         buttonColor='transparent'
+                        handleClick={() => {}}
                     />
                 </div>
             </div>

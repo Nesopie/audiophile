@@ -20,8 +20,22 @@ exports.getByCategory = (req: any, res: any): void => {
             else 
                 res.send(results);
         });
-    }catch(error: unknown) {
+    } catch(error: unknown) {
         if(error instanceof Error) 
-            res.json({ error: error.message});
+            res.json({ error: error.message });
+    }
+}
+
+exports.getById = (req: any, res: any): void => {
+    try {
+        Product.findById(req.params.id).exec((err: unknown, results: any) => {
+            if(err && err instanceof Error)
+                console.error(err.message);
+            else 
+                res.send(results);
+        })
+    } catch(error: unknown) {
+        if(error instanceof Error) 
+            res.json({ error: error.message })
     }
 }

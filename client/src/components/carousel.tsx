@@ -12,7 +12,7 @@ const Carousel = (): JSX.Element => {
                 <span id="carousel-text">New product</span>
                 <span id="carousel-product">XX99 Mark II Headphones</span>
                 <span id="carousel-description">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</span>
-                <Button buttonLabel="SEE PRODUCT" buttonColor="orange"/>
+                <Button buttonLabel="SEE PRODUCT" buttonColor="orange" handleClick={() => {}}/>
             </div>
         </section>
     );

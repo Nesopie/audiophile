@@ -1,0 +1,44 @@
+@import url('../../utils/base.css');
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+.product-card img {
+    max-width: 90vw;
+    border-radius: 25px;
+}
+
+.product-card div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.product-card div span {
+    font-size: 1.2rem;
+    color: var(--dark-orange);
+    letter-spacing: 6px;
+}
+
+.product-card div div {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.product-card div p {
+    font-size: 0.9rem;
+    color: var(--dark-grey);
+    line-height: 1.2rem;
+    text-align: center;
+    margin: 0 1rem;
+}
