@@ -37,6 +37,8 @@ const ProductOverview = ({
             type: 'ADD',
             newProduct
         });
+
+        console.log(store.getState());
     }
 
     return (
