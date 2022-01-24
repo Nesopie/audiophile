@@ -1,0 +1,82 @@
+@import url('../../utils/base.css');
+
+.product-overview > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    max-width: 90vw;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.product-overview img {
+    max-width: 90vw;
+    border-radius: 10px;
+}
+
+.product-overview > div > div { 
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.product-overview h2 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.product-overview h3 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.product-overview > div > div > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.product-events {
+    display: flex;
+    gap: 1.4rem;
+}
+
+.product-overview p {
+    color: var(--dark-grey);
+}
+
+.new-product {
+    font-size: 1.1rem;
+    color: var(--dark-orange);
+    letter-spacing: 8px;
+}
+
+.product-overview ul {
+    text-decoration: none;
+}
+
+.product-overview ul li {
+    display: flex;
+    gap: 3rem;
+    position: relative;
+}
+
+#bullets {
+    position: absolute;
+}
+
+.product-overview ul li > div:first-child {
+    color: var(--dark-orange);
+}
+
+
+.product-overview ul li > div:last-child {
+    color: var(--dark-grey);
+    margin-left: 3rem;
+    letter-spacing: 0.8px;
+}

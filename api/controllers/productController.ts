@@ -26,9 +26,9 @@ exports.getByCategory = (req: any, res: any): void => {
     }
 }
 
-exports.getById = (req: any, res: any): void => {
+exports.getBySlug = (req: any, res: any): void => {
     try {
-        Product.findById(req.params.id).exec((err: unknown, results: any) => {
+        Product.find({slug: req.params.slug}).exec((err: unknown, results: any) => {
             if(err && err instanceof Error)
                 console.error(err.message);
             else 

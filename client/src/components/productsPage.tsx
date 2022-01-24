@@ -27,7 +27,7 @@ const ProductPage = (): JSX.Element => {
     }, [])
     return (
         <div className="product-page-container">
-            <Header category={category}/>
+            <Header category={`${category}`} />
             <section className="product-container">
                 {!loading && products.map((product) => {
                     return (
@@ -39,6 +39,7 @@ const ProductPage = (): JSX.Element => {
                             productName={product.name}
                             productDescription={product.description}
                             category={category}
+                            slug={product.slug}
                         />
                     );
                 })}

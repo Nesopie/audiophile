@@ -18,6 +18,10 @@ header {
     background-color: rgba(0,0,0,1);
 }
 
+#plain {
+    position: relative;
+}
+
 header > div:first-child {
     display: flex;
     padding: 1.6rem 0.9rem 1.6rem 0.9rem; 
@@ -33,4 +37,21 @@ header span {
     font-size: 1.6rem;
     letter-spacing: 3px;
     border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.cart-icon {
+    position: relative;
+    text-align: center;
+}
+
+.cart-icon div {
+    position: absolute;
+    height: 0.9rem;
+    width: 0.9rem;
+    font-size: 0.6rem;
+    color: white;
+    background-color: var(--dark-orange);
+    border-radius: 50%;
+    bottom: 0;
+    right: -0.45rem;
 }

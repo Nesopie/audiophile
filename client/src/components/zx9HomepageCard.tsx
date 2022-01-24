@@ -19,7 +19,6 @@ const ZX9Card = (): JSX.Element => {
                 <Button 
                     buttonLabel='SEE PRODUCT' 
                     buttonColor='black'
-                    handleClick={() => {}}
                 />
             </div>
         </section>

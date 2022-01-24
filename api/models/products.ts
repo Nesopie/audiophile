@@ -17,6 +17,7 @@ const ProductSchema: mongoose.Schema = new Schema<Products>(
         new: Boolean,
         price: Number,
         description: String,
+        features: String,
         includes: [ IncludesSchema ],
         gallery: GallerySchema,
         others: [ RecommendedProductsSchema ]

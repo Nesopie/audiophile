@@ -1,0 +1,13 @@
+@import url('../../utils/base.css');
+
+#root > div {
+    background-color: var(--light-grey);
+}
+
+.checkout {
+    width: 90vw;
+    margin: 2rem auto;
+    padding: 1rem 1.4rem;
+    background-color: white;
+    border-radius: 20px;
+}

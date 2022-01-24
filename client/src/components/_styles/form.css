@@ -1,0 +1,43 @@
+@import url('../../utils/base.css');
+
+.form-section {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    /* align-content: center;
+    align-items: center; */
+    gap: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+.form-section h4 {
+    color: var(--dark-orange);
+    letter-spacing: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.form-section div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid var(--dark-grey);
+    padding: 1rem;
+}

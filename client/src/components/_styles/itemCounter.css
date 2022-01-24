@@ -1,0 +1,30 @@
+@import url('../../utils/base.css');
+
+.item-counter {
+    background-color: var(--light-grey);
+    display: flex;
+}
+
+.item-counter div {
+    font-size: .9rem;
+    margin: 0 1rem;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-counter button {
+    border: 0;
+    outline: 0;
+    background-color: rgba(0,0,0,0);
+    color: var(--dark-grey);
+}
+
+.item-counter button:first-child {
+    padding-left: 1.4rem;
+}
+
+.item-counter button:last-child {
+    padding-right: 1.4rem;
+}

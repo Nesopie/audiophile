@@ -3,12 +3,13 @@ import './_styles/button.css';
 
 const Button = ({ 
         buttonLabel, 
-        buttonColor, 
-        handleClick 
+        buttonColor,
+        handleClick
     }
     : { buttonLabel: string, 
-        buttonColor: string, 
-        handleClick: MouseEventHandler<HTMLButtonElement>})
+        buttonColor: string,
+        handleClick?: any
+    })
     : JSX.Element => {
     return (
         <button className={`${buttonColor} button`} onClick={handleClick}>{buttonLabel}</button>
