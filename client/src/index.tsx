@@ -22,13 +22,12 @@ const cartReducer = (state: Array<State> = [], action: any) => {
             return [...state, action.newProduct]
         case('CHANGE_QUANTITY') :
             const newState: Array<State> = state;
-            console.log(state);
             newState[action.index] = {...newState[action.index], quantity: newState[action.index].quantity + action.change};
-            return newState;
+            return [...newState];
         case('DELETE') :
             let newerState: Array<State> = state;
             newerState.splice(action.index, 1);
-            return newerState;
+            return [...newerState];
         default: 
             return state;
     }

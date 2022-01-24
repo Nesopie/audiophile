@@ -6,6 +6,7 @@ require('dotenv').config()
 const app = express();
 const url: string = <string>process.env.MONGODB_URI;
 
+app.use(cors());
 const productRouter = require('./routes/productRouter');
 
 mongoose.connect(url)
@@ -18,7 +19,6 @@ mongoose.connect(url)
 });
 
 app.use('/api/products', productRouter);
-app.use(cors());
 app.use(express.static('build'));
 
 const PORT = process.env.PORT || 3000;

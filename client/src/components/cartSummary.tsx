@@ -4,6 +4,7 @@ import Button from './button';
 import CartSummaryItemCounter from './CartSummaryItemCounter';
 import { createContext, useContext, useEffect, useState } from 'react';
 import './_styles/cartSummary.css';
+import uniqid from 'uniqid'
 
 export const ProductsContext = createContext<any>([]);
 
@@ -18,8 +19,7 @@ const removeCategoryFromName = (name: string): string => {
 }
 
 const CartSummary = (): JSX.Element => {
-    const [ cartProducts, setCartProducts ] = useState<Array<State>>(useSelector((state: RootState) => state));
-    const value = { cartProducts, setCartProducts }
+    const cartProducts = (useSelector((state: RootState) => state));
 
     const getTotal = (): number => {
         let total: number = 0;
@@ -35,7 +35,6 @@ const CartSummary = (): JSX.Element => {
     }, [cartProducts])
 
     return(
-        <ProductsContext.Provider value={value}>
             <div className="cart-summary">
                 <div>
                     <h2>CART({cartProducts.length})</h2>
@@ -43,7 +42,7 @@ const CartSummary = (): JSX.Element => {
                 </div>
                 {cartProducts.map((cartProduct: State, index: number) => {
                     return (
-                        <div className='summary-products'>
+                        <div className='summary-products' key={uniqid()}>
                             <div>
                                 <img src={require(`${cartProduct.imagePath}`)} /> 
                                 <div>
@@ -66,7 +65,6 @@ const CartSummary = (): JSX.Element => {
                     buttonColor="orange"
                 />
             </div>
-        </ProductsContext.Provider>
     );
 }
 

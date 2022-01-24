@@ -3,6 +3,9 @@ import Button from "./button";
 import ItemCounter from "./itemCounter";
 import { useState } from "react";
 import { store } from "../index";
+import uniqid from 'uniqid';
+
+import './_styles/productOverview.css';
 
 const ProductOverview = ({ 
     imagePaths,
@@ -70,7 +73,7 @@ const ProductOverview = ({
                             <ul>
                                 {includes.map((item) => {
                                     return(
-                                        <li>
+                                        <li key={uniqid()}>
                                             <div id="bullets">{item.quantity}x</div>
                                             <div>{item.item}</div>
                                         </li>
@@ -81,7 +84,7 @@ const ProductOverview = ({
                     </div>
                     <div className="gallery">
                         {gallery.map((galleryImage) => {
-                            return <img src={require(`${galleryImage}`)} />
+                            return <img key={uniqid()} src={require(`${galleryImage}`)} />
                         })}
                     </div>
                 </div>

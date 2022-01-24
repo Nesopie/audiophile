@@ -1,5 +1,6 @@
 import Button from "./button";
 import axios from 'axios';
+import './_styles/productCard.css';
 
 const baseUrl: string = 'http://localhost:3001/api/products';
 

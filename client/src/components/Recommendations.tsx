@@ -1,6 +1,7 @@
 import axios, { Axios, AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { RecommendedProducts, Products } from '../types';
+import uniqid from 'uniqid';
 
 import Button from './button';
 
@@ -45,7 +46,7 @@ const Recommendations = ({recommendedProducts}: {recommendedProducts: Array<Reco
             <div>
                 {!isLoading && recommendations.map((recommendation, index) => {
                     return (
-                        <div>
+                        <div key={uniqid()}>
                             <img src={require(`./assets/shared/mobile/image-${recommendedProducts[index].slug}.jpg`)} />
                             <h3>{recommendedProducts[index].name}</h3>
                             <Button 
