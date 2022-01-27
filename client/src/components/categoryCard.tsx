@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import rightArraw from './assets/shared/desktop/icon-arrow-right.svg';
 import './_styles/categoryCard.css'
 
@@ -10,12 +12,14 @@ const CategoryCard = ({ imagePath, categoryName }: {imagePath: string, categoryN
             <div>
                 {categoryName}
             </div>
-            <a href={`#/products/${categoryName.toLowerCase()}`}>
+            <Link
+                to={`products/${categoryName.toLowerCase()}`}
+            >
                 <button >
                     <p>SHOP</p>
                     <img src={rightArraw} /> 
                 </button>
-            </a>
+            </Link>
         </div>
     )
 }

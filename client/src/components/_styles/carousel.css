@@ -6,20 +6,35 @@
     left: 0;
 }
 
+.carousel > div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-height: 90vh;
+    max-height: 800px;
+    background: url('.././assets/home/mobile/image-header.jpg') fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
 .carousel div img{
-    max-width: 100vw;
+    min-width: 90vw;
+    max-width: 480px;
+    z-index: 1;
 }
 
 .carousel-about {
     position: absolute;
-    bottom: 20%;
-    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 1rem;
     padding: 0 1.5rem;
+    z-index: 2;
 }
 
 #carousel-text {
@@ -38,4 +53,54 @@
     color: var(--dark-grey);
     font-size: 1rem;
     font-weight: 400;
+}
+
+@media only screen and (min-width: 500px) {
+    .carousel > div {
+        background: url('.././assets/home/tablet/image-header.jpg') fixed;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .carousel-about {
+        top: calc(50%);
+        padding: 0;
+        gap: 2rem;
+    }
+
+    #carousel-text {
+        letter-spacing: 1rem;
+    }
+
+    #carousel-product {
+        font-size: 4rem;
+    }
+}
+
+@media only screen and (min-width: 824px) {
+    .carousel > div {
+        background: url('.././assets/home/desktop/image-hero.jpg') fixed;
+        background-position: center;
+    }
+
+    .carousel-about {
+        align-content: flex-start;
+        align-items: flex-start;
+        left: 10vw;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .carousel div img {
+        min-height: 728px;
+    }
+
+    #carousel-text {
+        text-align: left;
+    }
+
+    #carousel-product {
+        font-size: 2.4rem;
+    }
 }

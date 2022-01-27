@@ -43,3 +43,50 @@
     font-weight: 600;
     line-height: 1.3rem;
 }
+
+@media screen and (min-width: 480px) {
+    .best-gear {
+        width: 80vw;
+    }
+
+    .best-gear img {
+        width: 100%;
+    }
+
+    .best-gear div p {
+        font-size: 3rem;
+    }
+
+    .best-gear article > div:last-child {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .best-gear {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .best-gear img {
+        order: 1;
+    }
+
+    .best-gear article {
+        order: -1;
+        justify-content: flex-start;
+        align-content: center;
+        text-align: left;
+        gap: 2rem;
+    }
+
+    .best-gear article > div:first-child {
+        padding: 0 2vw;
+    }
+
+    .best-gear article > div:last-child {
+        justify-content: flex-start;
+        line-height: 1.6rem;
+    }
+}

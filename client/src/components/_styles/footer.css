@@ -3,7 +3,7 @@
 footer {
     position: relative;
     width: 100vw;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 1rem 1.4rem 1rem;
     background-color: black;
     color: white;
     display: flex;
@@ -44,14 +44,106 @@ footer > div:first-child {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+}
+
+.footer-text > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     line-height: 1.5rem;
     gap: 1rem;
     font-size: 0.9rem;
     color: var(--dark-grey);
 }
+
 .socials {
-    margin: 4rem 0 2rem 0;
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+}
+
+.socials img {
+    z-index: 2;
+}
+
+@media screen and (min-width: 480px) {
+    footer {
+        justify-content: unset;
+        padding: 3rem 4rem 4rem 4rem;
+        text-align: left;
+    }
+
+    footer .footer-decoration {
+        height: 6px;
+    }
+
+    footer h3 {
+        font-size: 2.5rem;
+    }
+
+    footer .links-container {
+        display: grid;
+        grid-template-columns: repeat(2,100%);
+    }
+    
+    footer .links-container a {
+        font-size: 1.2rem;
+    }
+
+    .footer-text > div:first-child {
+        font-size: 1rem;
+        gap: 3rem;
+        align-items: flex-start;
+    }
+
+    footer img {
+        z-index: 3;
+    }
+
+    .footer-text {
+        position: relative;
+    }
+
+    .socials {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    footer .links-container {
+        display: flex;
+        gap: 2rem;
+    }
+}
+
+@media screen and (min-width: 824px) {
+    footer {
+        padding: 3rem 10vw;
+    }
+
+    footer > div:nth-child(2) {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .links-container a {
+        margin: 0;
+    }
+
+    .footer-text {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .socials {
+        position: unset;
+        justify-content: flex-end;
+    }
 }

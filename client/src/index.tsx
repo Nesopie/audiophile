@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
@@ -39,7 +39,7 @@ export const store = createStore(cartReducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter>
+    <BrowserRouter>
         <Routes>
             <Route 
                 path="/" 
@@ -58,7 +58,7 @@ ReactDOM.render(
                 element={<Checkout />}
             />
         </Routes>
-    </HashRouter>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

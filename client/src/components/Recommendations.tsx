@@ -1,9 +1,11 @@
-import axios, { Axios, AxiosResponse } from 'axios';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { RecommendedProducts, Products } from '../types';
 import uniqid from 'uniqid';
+import { useMediaQuery } from 'react-responsive';
 
 import Button from './button';
+import './_styles/Recommendations.css';
 
 const getCategoryFromSlug  = (slug: string) => {
     let i;
@@ -24,21 +26,20 @@ const getAllUrls = (array: Array<RecommendedProducts>) => {
 
 const baseUrl = 'http://localhost:3001/api/products';
 
-const Recommendations = ({recommendedProducts}: {recommendedProducts: Array<RecommendedProducts>}): JSX.Element => {
+const Recommendations = ({ recommendedProducts }: { recommendedProducts: Array<RecommendedProducts> }): JSX.Element => {
     const [ recommendations, setRecommendations ] = useState<Array<Products>>([]);
     const [ isLoading, setIsLoading ] = useState<Boolean>(false);
+    const   isMobile = useMediaQuery({ maxWidth: 700 });
+    const   isTablet = useMediaQuery({ minWidth: 700 });
 
     useEffect(() => {
         setIsLoading(true);  
         axios.all(getAllUrls(recommendedProducts))
-        .then((result: any) => result.map((singleResult: any) => singleResult.data[0]))
-        .then(result => setRecommendations(result));
+            .then((result: any) => result.map((singleResult: any) => singleResult.data[0]))
+            .then(result => setRecommendations(result));
 
         setIsLoading(false);
     }, []);
-
-    useEffect(() => {
-    }, [recommendations]);
 
     return (
         <section className="recommended-products">
@@ -47,7 +48,7 @@ const Recommendations = ({recommendedProducts}: {recommendedProducts: Array<Reco
                 {!isLoading && recommendations.map((recommendation, index) => {
                     return (
                         <div key={uniqid()}>
-                            <img src={require(`./assets/shared/mobile/image-${recommendedProducts[index].slug}.jpg`)} />
+                            <img src={require(`./assets/shared/${isMobile ? 'mobile' : 'tablet'}/image-${recommendedProducts[index].slug}.jpg`)} />
                             <h3>{recommendedProducts[index].name}</h3>
                             <Button 
                                 buttonLabel='SEE PRODUCT'

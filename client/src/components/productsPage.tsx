@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Products } from "../types";
+import { useMediaQuery } from "react-responsive";
 import axios from 'axios';
 
 import Header from "./header";
@@ -15,6 +16,8 @@ const baseUrl: string = 'http://localhost:3001/api/products';
 const ProductPage = (): JSX.Element => {
     const [ products, setProducts ] = useState<Array<Products>>([]);
     const [ loading, setLoading ] = useState<Boolean>(true);
+    const isMobile = useMediaQuery({ maxWidth: 480 });
+    const isTablet = useMediaQuery({ maxWidth: 824 });
 
     const { category } = useParams();
     useEffect(() => {
@@ -22,6 +25,7 @@ const ProductPage = (): JSX.Element => {
             .then(response =>  response.data )
             .then(result => { 
                 setProducts(result); 
+                console.log(result);
                 setLoading(false);
             });
     }, [])
@@ -34,7 +38,7 @@ const ProductPage = (): JSX.Element => {
                         <ProductCard 
                             key={product._id}
                             id={`${product._id}`}
-                            imagePath={require(`${product.image.mobile}`)}
+                            imagePath={require(`${isMobile ? product.categoryImage.mobile : isTablet ? product.categoryImage.tablet : product.categoryImage.desktop}`)}
                             newProduct={product.new}
                             productName={product.name}
                             productDescription={product.description}

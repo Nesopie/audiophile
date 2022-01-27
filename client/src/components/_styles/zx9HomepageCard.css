@@ -15,8 +15,7 @@
 .zx9-card img {
     padding-top: 3rem;
     width: 90vw;
-    background-image: radial-gradient(circle at center center, var(--dark-orange) 0%, var(--dark-orange) 50%, white 50.2%, var(--dark-orange) 50.5%, var(--dark-orange) 65%, white 65.2%, var(--dark-orange) 65.5%, var(--dark-orange) 100%);
-    overflow: scroll;
+    background-image: radial-gradient(circle at center center, var(--dark-orange) 0%, var(--dark-orange) 55%, white 55.2%, var(--dark-orange) 55.5%, var(--dark-orange) 70%, white 70.2%, var(--dark-orange) 70.5%, var(--dark-orange) 100%);
 }
 
 .zx9-card-description {
@@ -38,4 +37,49 @@
 .zx9-card-description > div {
     font-weight: 200;
     line-height: 1.6rem;
+}
+
+@media screen and (min-width: 500px) {
+    .zx9-card-description {
+        padding: 0 5rem;
+    }
+    
+    .zx9-card-description h1 {
+        font-size: 4rem;
+    }
+
+    .zx9-card-description > div {
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
+}
+
+@media screen and (min-width: 824px) {
+    .zx9-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .zx9-card > div:first-child {
+        background-image: radial-gradient(circle at center center, var(--dark-orange) 0%, var(--dark-orange) 60%, white 60.2%, var(--dark-orange) 60.5%, var(--dark-orange) 70%, white 70.2%, var(--dark-orange) 70.5%, var(--dark-orange) 100%);
+    }
+
+    .zx9-card img {
+        position: relative;
+        max-width: 410px;
+        top: 20px;
+        z-index: 1;
+    }
+
+    .zx9-card-description {
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        transform: unset;
+        padding: 0;
+        text-align: left;
+        gap: 1rem;
+    }
 }

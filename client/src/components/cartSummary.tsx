@@ -1,12 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState, State, store } from '../index';
+import { useSelector } from 'react-redux';
+import { RootState, State } from '../index';
 import Button from './button';
 import CartSummaryItemCounter from './CartSummaryItemCounter';
-import { createContext, useContext, useEffect, useState } from 'react';
 import './_styles/cartSummary.css';
 import uniqid from 'uniqid'
-
-export const ProductsContext = createContext<any>([]);
 
 const removeCategoryFromName = (name: string): string => {
     if(name.includes("Headphones"))
@@ -30,41 +27,39 @@ const CartSummary = (): JSX.Element => {
         return total;
     }
 
-    useEffect(() => {
-        console.log("hi");
-    }, [cartProducts])
-
     return(
-            <div className="cart-summary">
-                <div>
-                    <h2>CART({cartProducts.length})</h2>
-                    <button>Remove all</button>
-                </div>
-                {cartProducts.map((cartProduct: State, index: number) => {
-                    return (
-                        <div className='summary-products' key={uniqid()}>
-                            <div>
-                                <img src={require(`${cartProduct.imagePath}`)} /> 
-                                <div>
-                                    <div>{removeCategoryFromName(cartProduct.name)}</div>
-                                    <div>$ {cartProduct.price}</div>
-                                </div>
-                            </div>
-                            <CartSummaryItemCounter
-                                index={index}
-                            />
-                        </div>
-                    )
-                })}
-                <div className="total">
-                    <div>TOTAL</div>
-                    <div>$ {getTotal()}</div>
-                </div>
-                <Button 
-                    buttonLabel="CHECKOUT"
-                    buttonColor="orange"
-                />
+        <div className="cart-summary hide-cart-summary">
+            <div>
+                <h2>CART({cartProducts.reduce((previous,next) => {
+                    return { quantity: previous.quantity + next.quantity}
+                }, { quantity: 0 }).quantity})</h2>
+                <button>Remove all</button>
             </div>
+            {cartProducts.map((cartProduct: State, index: number) => {
+                return (
+                    <div className='summary-products' key={uniqid()}>
+                        <div>
+                            <img src={require(`${cartProduct.imagePath}`)} /> 
+                            <div>
+                                <div>{removeCategoryFromName(cartProduct.name)}</div>
+                                <div>$ {cartProduct.price}</div>
+                            </div>
+                        </div>
+                        <CartSummaryItemCounter
+                            index={index}
+                        />
+                    </div>
+                )
+            })}
+            <div className="total">
+                <div>TOTAL</div>
+                <div>$ {getTotal()}</div>
+            </div>
+            <Button 
+                buttonLabel="CHECKOUT"
+                buttonColor="orange"
+            />
+        </div>
     );
 }
 

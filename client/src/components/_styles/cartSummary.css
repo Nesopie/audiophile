@@ -1,13 +1,27 @@
 @import url('../../utils/base.css');
 
-.cart-summary {
+.show-cart-summary {
     display: flex;
+}
+
+.hide-cart-summary {
+    display: none;
+}
+
+.cart-summary {
+    position: absolute;
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
     width: 90vw;
-    margin: 2rem auto;
-    border-radius: 25px;
+    max-width: 400px;
+    margin: 4rem auto;
+    border-radius: 8px;
+    right: 0;
+    background-color: white;
+    color: black;
+    opacity: 1;
+    z-index: 100;
 }
 
 .cart-summary > div:first-child {
@@ -34,11 +48,13 @@
 .summary-products img {
     max-width: 64px;
     max-height: 64px;
+    z-index: 1;
 }
 
 .summary-products > div {
     display: flex;
     gap: 1rem;
+    text-align: left;
 }
 
 .summary-products div div {
@@ -48,8 +64,19 @@
     gap: 4px;
 }
 
+.summary-products div div div:first-child {
+    letter-spacing: 1px;
+}
+
+.summary-products div div div:last-child {
+    color: var(--dark-grey);
+    font-weight: 500;
+}
+
 .summary-products .item-counter {
     height: 36px;
+    color: var(--dark-grey);
+    font-weight: 500;
 }
 
 .summary-products .item-counter button:first-child {

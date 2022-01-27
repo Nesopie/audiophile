@@ -8,6 +8,8 @@ import ProductOverview from './productOverview';
 import Recommendations from './Recommendations';
 import ProductCategory from './productCategory';
 import Footer from './footer';
+import './_styles/productsPage.css';
+import BestGear from './bestGear';
 
 const baseUrl: string = 'http://localhost:3001/api/products';
 
@@ -22,27 +24,28 @@ const ProductPage = (): JSX.Element => {
     }, []);
 
     return(
-    <div>
-        <Header category="plain" />
-        {product !== undefined
-        && <ProductOverview 
-            imagePaths={product.categoryImage}
-            newProduct={product.new}
-            name={product.name}
-            description={product.description}
-            price={`${product.price}`}
-            features={product.features}
-            includes={product.includes}
-            gallery={[product.gallery.first.mobile, product.gallery.second?.mobile, product.gallery.third?.mobile]}
-        />}
-        {product !== undefined
-        && <Recommendations 
-            recommendedProducts={product.others}
-        />
-        }
-        <ProductCategory />
-        <Footer />
-    </div>
+        <div className="product-page-container">
+            <Header category="plain" />
+            {product !== undefined
+            && <ProductOverview 
+                imagePaths={product.image}
+                newProduct={product.new}
+                name={product.name}
+                description={product.description}
+                price={`${product.price}`}
+                features={product.features}
+                includes={product.includes}
+                gallery={product.gallery}
+            />}
+            {product !== undefined
+            && <Recommendations 
+                recommendedProducts={product.others}
+            />
+            }
+            <ProductCategory />
+            <BestGear />
+            <Footer />
+        </div>
     );
 }
 

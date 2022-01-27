@@ -1,8 +1,6 @@
 import Button from "./button";
-import axios from 'axios';
 import './_styles/productCard.css';
-
-const baseUrl: string = 'http://localhost:3001/api/products';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ imagePath, newProduct, productName, productDescription, id, category, slug }: { imagePath: string, newProduct: boolean, productName: string, productDescription: string, id: string, category: string | undefined, slug: string}): JSX.Element => {
     return(
@@ -12,12 +10,14 @@ const ProductCard = ({ imagePath, newProduct, productName, productDescription, i
                 { newProduct ? <span> NEW PRODUCT </span> : null}
                 <div>{ productName }</div>
                 <p>{ productDescription }</p>
-                <a href={`#/products/${category}/${slug}`}>
+                <Link
+                    to={`${slug}`}
+                >
                     <Button 
                         buttonLabel="SEE PRODUCT"
                         buttonColor="orange"
                     />
-                </a>
+                </Link>
             </div>
         </section>
     );

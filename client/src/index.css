@@ -11,3 +11,16 @@ body {
     position: relative;
     background-color: white;
 }
+
+.blur {
+    background-color: rgba(0,0,0,0.6);
+    color: (0,0,0,0.3);
+}
+
+img {
+    z-index: -1;
+}
+
+a {
+    z-index: 101;
+}

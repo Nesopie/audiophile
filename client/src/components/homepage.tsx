@@ -14,7 +14,7 @@ const Homepage = (): JSX.Element => {
         <div style={{position: "relative"}}>
             <Header category={undefined}/>
             <Carousel />
-            <CartSummary />
+            {/* <CartSummary /> */}
             <div className="homepage">
                 <ProductCategory />
                 <ProductDisplay />

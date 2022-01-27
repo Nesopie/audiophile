@@ -1,10 +1,14 @@
 @import url('../../utils/base.css');
 
+.yx1 img {
+    height: 100%;
+}
+
 .yx1-card {
     position: relative;
     z-index: 100;
     background-color: var(--light-medium-grey);
-    border-radius: 25px;;
+    border-radius: 25px;
 }
 
 .yx1-card img{
@@ -28,6 +32,7 @@
     font-size: 2rem;
     letter-spacing: 2px;
     font-weight: 500;
+    text-overflow: clip;
 }
 
 .yx1-card button {

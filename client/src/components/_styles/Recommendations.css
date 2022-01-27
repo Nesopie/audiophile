@@ -5,12 +5,12 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 90vw;
+    width: 90vw;
     margin: 0 auto;
 }
 
 .recommended-products img {
-    max-width: 90vw;
+    max-width: 100%;
     border-radius: 10px;
 }
 
@@ -34,4 +34,19 @@
     font-size: 1.6rem;
     letter-spacing: 2px;
     font-weight: 600;
+}
+
+@media screen and (min-width: 700px) {
+    .recommended-products {
+        width: 80vw;
+        gap: 2rem;
+    }
+
+    .recommended-products > div {
+        flex-direction: row;
+    }
+
+    .recommended-products h3 {
+        font-size: 1.2rem;
+    }
 }

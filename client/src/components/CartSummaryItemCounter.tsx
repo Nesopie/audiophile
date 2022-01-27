@@ -1,6 +1,5 @@
-import { useContext, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, store } from '..';
+import { RootState } from '..';
 
 import './_styles/itemCounter.css';
 
@@ -14,7 +13,6 @@ const CartSummaryItemCounter = ({ index }: { index: number }): JSX.Element => {
 
     const decrement = () => {
         if(cartProducts[index].quantity === 1) {
-            console.log('hi from delete');
             dispatch({type: 'DELETE', index});
         }else {
             dispatch({type: 'CHANGE_QUANTITY', index, change: -1});

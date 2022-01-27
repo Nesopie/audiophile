@@ -1,10 +1,11 @@
-import { Images, Includes } from "../types";
-import Button from "./button";
-import ItemCounter from "./itemCounter";
+import { Gallery, Images, Includes } from "../types";
 import { useState } from "react";
 import { store } from "../index";
 import uniqid from 'uniqid';
+import { useMediaQuery } from 'react-responsive';
 
+import Button from "./button";
+import ItemCounter from "./itemCounter";
 import './_styles/productOverview.css';
 
 const ProductOverview = ({ 
@@ -17,16 +18,18 @@ const ProductOverview = ({
     includes,
     gallery
  }: { 
-    imagePaths: Images, 
+    imagePaths: Images,
     newProduct: Boolean, 
     name: string, 
     description: string,
     price: string, 
     features: string, 
     includes: Array<Includes>,
-    gallery: Array<string | undefined>
+    gallery: Gallery
 }): JSX.Element => {
     const [ quantity, setQuantity ] = useState<number>(1);
+    const isMobile = useMediaQuery({ maxWidth: 480 });
+    const isTablet = useMediaQuery({ maxWidth: 824 });
 
     const handleAddToCard = () => {
         const newProduct = {
@@ -40,35 +43,41 @@ const ProductOverview = ({
             type: 'ADD',
             newProduct
         });
-
-        console.log(store.getState());
     }
+
+    let galleryImages = [];
+    galleryImages.push(isMobile ? gallery.first.mobile   : isTablet ? gallery.first.tablet   : gallery.first.desktop)
+    galleryImages.push(isMobile ? gallery.third?.mobile  : isTablet ? gallery.third?.tablet  : gallery.third?.desktop)
+    galleryImages.push(isMobile ? gallery.second?.mobile : isTablet ? gallery.second?.tablet : gallery.second?.desktop)
+    console.log(galleryImages);
 
     return (
         <section className="product-overview">
             <div>
-                <img src={require(`${imagePaths.mobile}`)}/>
                 <div>
                     <div>
-                        {newProduct ? <div className="new-product">NEW PRODUCT</div> : null}
-                        <h2>{ name }</h2>
-                        <p>{ description }</p>
-                        <div>$ { price }</div>
-                        <div className="product-events">
-                            <ItemCounter quantity={quantity} setQuantity={setQuantity}/>
-                            <Button 
-                                buttonLabel="ADD TO CART"
-                                buttonColor="orange"
-                                handleClick={handleAddToCard}
-                            />
+                        <img src={require(`${isMobile ? imagePaths.mobile : isTablet ?  imagePaths.tablet : imagePaths.desktop}`)}/>
+                        <div className='product-brief'>
+                            {newProduct ? <div className="new-product">NEW PRODUCT</div> : null}
+                            <h2>{ name }</h2>
+                            <p>{ description }</p>
+                            <div>$ { price }</div>
+                            <div className="product-events">
+                                <ItemCounter quantity={quantity} setQuantity={setQuantity}/>
+                                <Button 
+                                    buttonLabel="ADD TO CART"
+                                    buttonColor="orange"
+                                    handleClick={handleAddToCard}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div>
-                        <div>
+                        <div className="product-about">
                             <h3>FEATURES</h3>
                             <p>{ features }</p>
                         </div>
-                        <div>
+                        <div className="product-about in-the-box">
                             <h3>IN THE BOX</h3>
                             <ul>
                                 {includes.map((item) => {
@@ -83,9 +92,11 @@ const ProductOverview = ({
                         </div>
                     </div>
                     <div className="gallery">
-                        {gallery.map((galleryImage) => {
-                            return <img key={uniqid()} src={require(`${galleryImage}`)} />
-                        })}
+                        <div>
+                            <img src={require(`${galleryImages[0]}`)}/>
+                            <img src={require(`${galleryImages[2]}`)}/>
+                        </div>
+                            <img src={require(`${galleryImages[1]}`)}/>
                     </div>
                 </div>
             </div>
