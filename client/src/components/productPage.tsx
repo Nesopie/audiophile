@@ -11,16 +11,16 @@ import Footer from './footer';
 import './_styles/productsPage.css';
 import BestGear from './bestGear';
 
-const baseUrl: string = 'http://localhost:3001/api/products';
+import productService from '../services/products';
 
 const ProductPage = (): JSX.Element => {
     const [ product, setProduct ] = useState<Products | undefined>(undefined)
 
     const { category, slug } = useParams();
     useEffect(() => {
-        axios.get(`${baseUrl}/${category}/${slug}`)
-            .then(response => response.data)
-            .then(result => setProduct(result[0]));
+        window.scroll(0,0);
+        productService.getProductBySlug(category, slug)
+        .then(result => setProduct(result[0]));
     }, []);
 
     return(

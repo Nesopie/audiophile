@@ -1,41 +1,44 @@
 import ReactDOM from 'react-dom';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import App from './App';
 import ProductPage from './components/productPage';
 import ProductsPage from './components/productsPage';
 import Checkout from './components/checkout';
-import './index.css'
+import LoginForm from './components/loginform';
+import './index.css';
 
-export type State = {
-    imagePath: string;
-    name: string;
-    price: number;
-    quantity: number;
-}
+import { User } from './types';
+import helper from './utils/helper';
 
-const cartReducer = (state: Array<State> = [], action: any) => {
+const userReducer = (state: User = { username: "", cart: [], token: null }, action: any): User => {
+    let newState: User = { username: "", cart: [], token: null };
     switch(action.type) {
-        case('ADD') :
-            return [...state, action.newProduct]
-        case('CHANGE_QUANTITY') :
-            const newState: Array<State> = state;
-            newState[action.index] = {...newState[action.index], quantity: newState[action.index].quantity + action.change};
-            return [...newState];
-        case('DELETE') :
-            let newerState: Array<State> = state;
-            newerState.splice(action.index, 1);
-            return [...newerState];
+        case('SET_USER') :
+            newState.username = action.username;
+            newState.cart = helper.sanitizeCart(action.cart);
+            newState.token = action.token;
+            localStorage.setItem('user', JSON.stringify(newState));
+            return {...newState}
+        case('SET_CART'):
+            newState = { ...state };
+            if(state.username === "" || !state.username) return state;
+            newState.cart = action.cart;
+            return {...newState};
+        case('SET_USER_LS') :
+            newState = action.user;
+            return { ...newState };
         default: 
             return state;
     }
 }
 
-export type RootState = ReturnType<typeof cartReducer>;
+export type RootState = ReturnType<typeof userReducer>;
 
-export const store = createStore(cartReducer);
+export const store = createStore(userReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -56,6 +59,10 @@ ReactDOM.render(
             <Route 
                 path="/checkout"
                 element={<Checkout />}
+            />
+            <Route 
+                path="/login"
+                element={<LoginForm />}
             />
         </Routes>
     </BrowserRouter>

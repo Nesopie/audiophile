@@ -6,10 +6,11 @@ import './_styles/header.css';
 import CartSummary from './cartSummary';
 import { RootState } from '../index';
 
-const Header = ({ category }: {category: string | undefined }) => {
+const Header = ({ category }: { category: string | undefined }) => {
     let { quantity }: { quantity: number } = useSelector((state: RootState) => {
-        return state.reduce((previous, next) => {
-            return {quantity: previous.quantity + next.quantity};
+        console.log(state);
+        return state.cart.reduce((previous, next) => {
+            return { quantity: previous.quantity + next.quantity };
         }, { quantity: 0});
     });
 
@@ -17,6 +18,7 @@ const Header = ({ category }: {category: string | undefined }) => {
         const cartSummary: Element | null = document.querySelector('.cart-summary');
         const images: NodeListOf<HTMLImageElement> = document.querySelectorAll('img');
         const mainDiv = document.querySelector('#root > div');
+        console.log(cartSummary);
         if(!cartSummary) return;
         if(cartSummary?.classList.contains('show-cart-summary')) {
             cartSummary.classList.remove('show-cart-summary');
@@ -33,13 +35,15 @@ const Header = ({ category }: {category: string | undefined }) => {
         <header id={`${category !== undefined? 'black-header': ""}`}>
             <div>
             <div>
-                    <img src={HamburgerIcon} />
+                <img src={HamburgerIcon} />
                 </div>
                 <h1>audiophile</h1>
                 <div className="cart-icon">
                     <img src={CartIcon} onClick={toggleSummaryDisplay}/>
                     { quantity && quantity > 0 ? <div className="cart-items">{ quantity }</div> : null }
-                    <CartSummary />
+                    <CartSummary 
+                        defaultState='hide'
+                    />
                 </div>
             </div>
             { category ? category !== "plain" ? <span>{category.toUpperCase()}</span> : null : null}

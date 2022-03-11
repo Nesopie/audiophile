@@ -1,12 +1,14 @@
 import { Gallery, Images, Includes } from "../types";
 import { useState } from "react";
-import { store } from "../index";
 import uniqid from 'uniqid';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from "react-redux";
 
 import Button from "./button";
 import ItemCounter from "./itemCounter";
 import './_styles/productOverview.css';
+
+import userService from "../services/users";
 
 const ProductOverview = ({ 
     imagePaths,
@@ -30,6 +32,7 @@ const ProductOverview = ({
     const [ quantity, setQuantity ] = useState<number>(1);
     const isMobile = useMediaQuery({ maxWidth: 480 });
     const isTablet = useMediaQuery({ maxWidth: 824 });
+    const dispatch = useDispatch();
 
     const handleAddToCard = () => {
         const newProduct = {
@@ -39,17 +42,13 @@ const ProductOverview = ({
             quantity
         }
 
-        store.dispatch({
-            type: 'ADD',
-            newProduct
-        });
+        dispatch(userService.addCartItem(newProduct));
     }
 
     let galleryImages = [];
     galleryImages.push(isMobile ? gallery.first.mobile   : isTablet ? gallery.first.tablet   : gallery.first.desktop)
     galleryImages.push(isMobile ? gallery.third?.mobile  : isTablet ? gallery.third?.tablet  : gallery.third?.desktop)
     galleryImages.push(isMobile ? gallery.second?.mobile : isTablet ? gallery.second?.tablet : gallery.second?.desktop)
-    console.log(galleryImages);
 
     return (
         <section className="product-overview">

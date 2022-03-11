@@ -1,0 +1,15 @@
+@import url('../../utils/base.css');
+
+.cash-on-delivery {
+    display: grid;
+    color: var(--dark-grey);
+    grid-template-rows: auto auto;
+    grid-gap: 1rem;
+}
+
+.cash-on-delivery img {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    z-index: 1;
+}

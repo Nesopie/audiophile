@@ -1,16 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import uniqid from 'uniqid'
+import { useEffect } from 'react';
 
 import Button from './button';
-import CartSummaryItemCounter from './CartSummaryItemCounter';
-import './_styles/cartSummary.css';
+import './_styles/checkoutSummary.css';
 
 import { RootState } from '../index';
 import { CartItem } from '../types';
 import helper from '../utils/helper';
 
-const CartSummary = ({ defaultState }: {defaultState: 'hide' | 'show'}): JSX.Element => {
+const CheckoutSummary = (): JSX.Element => {
     const cartProducts = (useSelector((state: RootState) => state.cart));
+    const dispatch = useDispatch();
+    let { quantity }: { quantity: number } = cartProducts.reduce((previous, next) => {
+            return { quantity: previous.quantity + next.quantity };
+        }, { quantity: 0});
 
     const getTotal = (): number => {
         let total: number = 0;
@@ -21,17 +25,19 @@ const CartSummary = ({ defaultState }: {defaultState: 'hide' | 'show'}): JSX.Ele
         return total === NaN ? 0 : total;
     }
 
+    useEffect(() => {
+        dispatch({ type: 'SET_USER_LS' })
+    }, []);
+
     return(
-        <div className={`cart-summary ${defaultState}-cart-summary`}>
+        <div className='checkout-summary'>
             <div>
-                <h2>CART({ cartProducts.reduce((previous,next) => {
-                    return { quantity: previous.quantity + next.quantity }
-                }, { quantity: 0 }).quantity })</h2>
+                <h2>CART({quantity})</h2>
                 <button>Remove all</button>
             </div>
             {cartProducts.map((cartProduct: CartItem, index: number) => {
                 return (
-                    <div className='summary-products' key={uniqid()}>
+                    <div className='checkout-products' key={uniqid()}>
                         <div>
                             <img src={require(`${cartProduct.imagePath}`)} /> 
                             <div>
@@ -39,9 +45,7 @@ const CartSummary = ({ defaultState }: {defaultState: 'hide' | 'show'}): JSX.Ele
                                 <div>$ {cartProduct.price}</div>
                             </div>
                         </div>
-                        <CartSummaryItemCounter
-                            index={index}
-                        />
+                        x{ cartProduct.quantity }
                     </div>
                 )
             })}
@@ -57,4 +61,4 @@ const CartSummary = ({ defaultState }: {defaultState: 'hide' | 'show'}): JSX.Ele
     );
 }
 
-export default CartSummary;
+export default CheckoutSummary;

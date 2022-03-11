@@ -1,42 +1,29 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-import { RecommendedProducts, Products } from '../types';
-import uniqid from 'uniqid';
 import { useMediaQuery } from 'react-responsive';
+import uniqid from 'uniqid';
 
 import Button from './button';
+import { RecommendedProducts, Products } from '../types';
 import './_styles/Recommendations.css';
+import productService from '../services/products';
 
-const getCategoryFromSlug  = (slug: string) => {
-    let i;
-    for(i = slug.length - 1; i >= 0; i--) {
-        if(slug[i] == '-') break;
-    }
-
-    return slug.substring(i + 1, slug.length);
-}
-
-const getAllUrls = (array: Array<RecommendedProducts>) => {
-    let result: any = [];
-    for(let i = 0; i < array.length; i++) {
-        result.push(axios.get(`${baseUrl}/${getCategoryFromSlug(array[i].slug)}/${array[i].slug}`));
-    }
-    return result;
-}
-
-const baseUrl = 'http://localhost:3001/api/products';
+import helper from '../utils/helper';
 
 const Recommendations = ({ recommendedProducts }: { recommendedProducts: Array<RecommendedProducts> }): JSX.Element => {
     const [ recommendations, setRecommendations ] = useState<Array<Products>>([]);
     const [ isLoading, setIsLoading ] = useState<Boolean>(false);
-    const   isMobile = useMediaQuery({ maxWidth: 700 });
-    const   isTablet = useMediaQuery({ minWidth: 700 });
+    const   isMobile = useMediaQuery({ maxWidth: 480 });
+    const   isTablet = useMediaQuery({ maxWidth: 824 });
 
     useEffect(() => {
         setIsLoading(true);  
-        axios.all(getAllUrls(recommendedProducts))
-            .then((result: any) => result.map((singleResult: any) => singleResult.data[0]))
-            .then(result => setRecommendations(result));
+        const getRecommendedProducts = async() => {
+            const response = await productService.getRecommendedProducts(recommendedProducts);
+            setRecommendations(response);
+        }
+
+        getRecommendedProducts();
 
         setIsLoading(false);
     }, []);
@@ -45,10 +32,10 @@ const Recommendations = ({ recommendedProducts }: { recommendedProducts: Array<R
         <section className="recommended-products">
             <h1>YOU MAY ALSO LIKE</h1>
             <div>
-                {!isLoading && recommendations.map((recommendation, index) => {
+                {!isLoading && recommendations.map((_recommendation, index) => {
                     return (
                         <div key={uniqid()}>
-                            <img src={require(`./assets/shared/${isMobile ? 'mobile' : 'tablet'}/image-${recommendedProducts[index].slug}.jpg`)} />
+                            <img src={require(`./assets/shared/${ isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop' }/image-${recommendedProducts[index].slug}.jpg`)} />
                             <h3>{recommendedProducts[index].name}</h3>
                             <Button 
                                 buttonLabel='SEE PRODUCT'

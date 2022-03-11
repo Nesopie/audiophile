@@ -1,0 +1,55 @@
+@import url('../../utils/base.css');
+
+.checkout-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    width: 90vw;
+    margin: 4rem auto;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.checkout-summary > div:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-summary > div:first-child button {
+    background-color: rgba(0,0,0,0);
+    color: var(--dark-grey);
+    text-align: right;   
+    border: 0;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.checkout-products {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.checkout-products img {
+    width: 64px;
+    height: 64px;
+    z-index: 1;
+}
+
+.checkout-products div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.checkout-products div div div:first-child {
+    letter-spacing: 1px;
+}
+
+.checkout-products div div div:last-child {
+    color: var(--dark-grey);
+    font-weight: 500;
+}

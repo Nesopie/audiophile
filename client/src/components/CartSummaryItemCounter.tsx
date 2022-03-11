@@ -3,19 +3,23 @@ import { RootState } from '..';
 
 import './_styles/itemCounter.css';
 
+import userService from '../services/users';
+
 const CartSummaryItemCounter = ({ index }: { index: number }): JSX.Element => {
     const dispatch = useDispatch();
-    const cartProducts = useSelector((state: RootState) => state);
+    const cartProducts = useSelector((state: RootState) => state.cart);
 
     const increment = () => {
-        dispatch({type: 'CHANGE_QUANTITY', index, change: 1});
+        dispatch(userService.changeQuantity(index, 1));
+        console.log(cartProducts);
     }
 
     const decrement = () => {
         if(cartProducts[index].quantity === 1) {
-            dispatch({type: 'DELETE', index});
+            console.log('hi');
+            dispatch(userService.deleteCartItem(index));
         }else {
-            dispatch({type: 'CHANGE_QUANTITY', index, change: -1});
+            dispatch(userService.changeQuantity(index, -1));
         }
     }
 

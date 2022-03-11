@@ -40,3 +40,8 @@ export interface Products {
     gallery: Gallery;
     others: Array<RecommendedProducts>
 }
+
+export interface CartItem {
+    product: mongoose.Schema.Types.ObjectId;
+    quantity: number;
+}

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Products } from "../types";
 import { useMediaQuery } from "react-responsive";
-import axios from 'axios';
 
 import Header from "./header";
 import ProductCard from "./productCard";
@@ -11,9 +10,9 @@ import BestGear from "./bestGear";
 import './_styles/productsPage.css';
 import Footer from "./footer";
 
-const baseUrl: string = 'http://localhost:3001/api/products';
+import productService from '../services/products';
 
-const ProductPage = (): JSX.Element => {
+const ProductsPage = (): JSX.Element => {
     const [ products, setProducts ] = useState<Array<Products>>([]);
     const [ loading, setLoading ] = useState<Boolean>(true);
     const isMobile = useMediaQuery({ maxWidth: 480 });
@@ -21,14 +20,13 @@ const ProductPage = (): JSX.Element => {
 
     const { category } = useParams();
     useEffect(() => {
-        axios.get(`${baseUrl}/${category}`)
-            .then(response =>  response.data )
-            .then(result => { 
-                setProducts(result); 
-                console.log(result);
-                setLoading(false);
-            });
-    }, [])
+        window.scroll(0,0);
+        productService.getProductsByCategory(category)
+        .then(result => { 
+            setProducts(result); 
+            setLoading(false);
+        });
+    }, []);
     return (
         <div className="product-page-container">
             <Header category={`${category}`} />
@@ -55,4 +53,4 @@ const ProductPage = (): JSX.Element => {
     );
 }
 
-export default ProductPage;
+export default ProductsPage;

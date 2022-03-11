@@ -1,6 +1,6 @@
 // These schemas are required to construct the other schemas
 import mongoose from 'mongoose';
-import { Images, Includes, Gallery, RecommendedProducts } from '../types';
+import { Images, Includes, Gallery, RecommendedProducts, CartItem } from '../types';
 
 const Schema = mongoose.Schema;
 
@@ -32,5 +32,15 @@ export const RecommendedProductsSchema: mongoose.Schema = new Schema<Recommended
         slug: String,
         name: String,
         images: ImagesSchema
+    }
+);
+
+export const CartItemSchema: mongoose.Schema = new Schema<CartItem>(
+    {
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product'
+        },
+        quantity: Number
     }
 );

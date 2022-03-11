@@ -1,18 +1,19 @@
-import { MouseEventHandler } from 'react';
 import './_styles/button.css';
 
 const Button = ({ 
         buttonLabel, 
         buttonColor,
-        handleClick
+        handleClick,
+        type
     }
     : { buttonLabel: string, 
         buttonColor: string,
-        handleClick?: any
+        handleClick?: any,
+        type?: "submit" | "button" | "reset" | undefined
     })
     : JSX.Element => {
     return (
-        <button className={`${buttonColor} button`} onClick={handleClick}>{buttonLabel}</button>
+        <button type={type} className={`${buttonColor} button`} onClick={handleClick}>{buttonLabel}</button>
     );
 }
 

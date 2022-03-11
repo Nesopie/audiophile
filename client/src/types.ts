@@ -41,3 +41,16 @@ export interface Products {
     gallery: Gallery;
     others: Array<RecommendedProducts>
 }
+
+export interface CartItem {
+    imagePath: string;
+    name: string;
+    price: number;
+    quantity: number;
+}
+
+export interface User {
+    username: string;
+    cart: Array<CartItem>;
+    token: string | null;
+}

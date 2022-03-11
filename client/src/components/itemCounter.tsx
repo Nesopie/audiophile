@@ -1,7 +1,3 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState, store } from '..';
-
 import './_styles/itemCounter.css';
 
 const ItemCounter = ({ quantity, setQuantity} : { quantity: number, setQuantity: any }): JSX.Element => {
