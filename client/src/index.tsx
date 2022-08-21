@@ -27,10 +27,14 @@ const userReducer = (state: User = { username: "", cart: [], token: null }, acti
             newState = { ...state };
             if(state.username === "" || !state.username) return state;
             newState.cart = action.cart;
+            localStorage.setItem('user', JSON.stringify(newState));
             return {...newState};
-        case('SET_USER_LS') :
+        case('SET_USER_LS'):
             newState = action.user;
             return { ...newState };
+        case('GET_STATE') :
+        console.log(state);
+            return state;
         default: 
             return state;
     }
@@ -41,31 +45,33 @@ export type RootState = ReturnType<typeof userReducer>;
 export const store = createStore(userReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-        <Routes>
-            <Route 
-                path="/" 
-                element={<App />} 
-            />
-            <Route 
-                path="/products/:category"
-                element={<ProductsPage />} 
-            />
-            <Route
-                path="/products/:category/:slug"
-                element={<ProductPage />}
-            />
-            <Route 
-                path="/checkout"
-                element={<Checkout />}
-            />
-            <Route 
-                path="/login"
-                element={<LoginForm />}
-            />
-        </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+        <helper.OnLoadWrapper>
+            <BrowserRouter>
+                <Routes>
+                    <Route 
+                        path="/" 
+                        element={<App />} 
+                    />
+                    <Route 
+                        path="/products/:category"
+                        element={<ProductsPage/>} 
+                    />
+                    <Route
+                        path="/products/:category/:slug"
+                        element={<ProductPage />}
+                    />
+                    <Route 
+                        path="/checkout"
+                        element={<Checkout />}
+                    />
+                    <Route 
+                        path="/login"
+                        element={<LoginForm />}
+                    />
+                </Routes>
+            </BrowserRouter>
+        </helper.OnLoadWrapper>
   </Provider>,
   document.getElementById('root')
 );

@@ -8,7 +8,7 @@ const Button = ({
     }
     : { buttonLabel: string, 
         buttonColor: string,
-        handleClick?: any,
+        handleClick?: React.MouseEventHandler<HTMLButtonElement>,
         type?: "submit" | "button" | "reset" | undefined
     })
     : JSX.Element => {

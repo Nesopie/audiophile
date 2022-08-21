@@ -1,0 +1,32 @@
+@import url('../../utils/base.css');
+
+.checkout-page {
+    background-color: var(--light-grey);
+}
+
+.checkout-container {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 480px) {
+    .checkout-container {
+        width: 80vw;
+    }
+}
+
+@media screen and (min-width: 824px) {
+    .checkout-container {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .checkout {
+        width: 200%;
+    }
+
+    .checkout-summary {
+        margin: 2rem auto;
+        height: 100%;
+    }
+}

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { CartItemSchema } from './baseModels';
 const uniqueValidator = require('mongoose-unique-validator');
-
+import { IUser } from '../types';
 const Schema = mongoose.Schema;
 
 const userSchema: mongoose.Schema = new Schema({
@@ -32,6 +32,5 @@ userSchema.set('toJSON', {
     }
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+const User = mongoose.model<IUser & mongoose.Document>('User', userSchema);
+module.exports = { User }

@@ -9,5 +9,41 @@
     margin: 2rem auto;
     padding: 1rem 1.4rem;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-details > div:last-child{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 480px) {
+    .checkout {
+        width: 80vw;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    section.form-section section {
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% - 1rem));
+    }
+
+    .payment-details {
+        position: relative;
+    }
+
+    .payment-details strong {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 1rem;
+    }
+
+    .payment-details > div:last-child {
+        display: flex;
+        flex-direction: column;
+    }
 }

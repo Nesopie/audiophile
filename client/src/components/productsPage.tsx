@@ -26,7 +26,7 @@ const ProductsPage = (): JSX.Element => {
             setProducts(result); 
             setLoading(false);
         });
-    }, []);
+    }, [window.location.pathname]);
     return (
         <div className="product-page-container">
             <Header category={`${category}`} />

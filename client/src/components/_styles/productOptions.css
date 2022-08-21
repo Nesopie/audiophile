@@ -1,0 +1,27 @@
+@import url('../../utils/base.css');
+
+.product-options {
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-start;
+    margin-left: 5vw;
+    gap: 1.5rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-top: -4rem;
+    margin-bottom: -4rem;
+}
+
+.product-options:hover {
+    cursor: pointer;
+}
+
+.selected {
+    border-bottom: 2px solid var(--dark-orange);
+}
+
+@media screen and (min-width: 480px) {
+    .product-options {
+        margin-left: 10vw;
+    }
+}

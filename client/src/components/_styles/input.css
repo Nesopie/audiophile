@@ -13,6 +13,16 @@
     justify-content: center;
 }
 
+.input-meta {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+}
+
+.input-meta span{
+    color: #e50914;
+}
+
 .radio-input-div {
     align-content: center;
     align-items: center;
@@ -21,6 +31,10 @@
 
 .radio-input-div label {
     display: inline-block;
+}
+
+.radio-input-div:focus-within {
+    border: 1px solid #d87c4a;
 }
 
 input {

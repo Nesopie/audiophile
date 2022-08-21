@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import facebookIcon from './assets/shared/desktop/icon-facebook.svg';
 import twitterIcon from './assets/shared/desktop/icon-twitter.svg';
 import instagramIcon from './assets/shared/desktop/icon-instagram.svg';
@@ -11,10 +12,10 @@ const Footer = (): JSX.Element => {
             <div>
                 <h3>audiophile</h3>
                 <div className="links-container">
-                    <a href='#'>HOME</a>
-                    <a href='#'>HEADPHONES</a>
-                    <a href='#'>SPEAKERS</a>
-                    <a href='#'>EARPHONES</a>
+                    <Link to="/">HOME</Link>
+                    <Link to="/products/headphones" >HEADPHONES</Link>
+                    <Link to="/products/speakers" >SPEAKERS</Link>
+                    <Link to="/products/earphones" >EARPHONES</Link>
                 </div>
             </div>
             <div>

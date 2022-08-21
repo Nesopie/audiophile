@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { Products, RecommendedProducts } from '../types';
-import helper from '../utils/helper';;
+import helper from '../utils/helper';
 
 const baseUrl: string = 'http://localhost:3001/api/products';
 

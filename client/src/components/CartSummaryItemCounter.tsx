@@ -16,7 +16,6 @@ const CartSummaryItemCounter = ({ index }: { index: number }): JSX.Element => {
 
     const decrement = () => {
         if(cartProducts[index].quantity === 1) {
-            console.log('hi');
             dispatch(userService.deleteCartItem(index));
         }else {
             dispatch(userService.changeQuantity(index, -1));

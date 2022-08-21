@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user');
+const { User } = require('../models/user');
 
 exports.login = async(request: any, response: any) => {
     const body = request.body;
@@ -27,6 +27,5 @@ exports.login = async(request: any, response: any) => {
     };
 
     const token = jwt.sign(userForToken, process.env.SECRET, { expiresIn: 60*60 });
-    console.log(userForToken);
     response.status(200).send({ token, username: user.username, name: user.name, cart: user.cart });
 }

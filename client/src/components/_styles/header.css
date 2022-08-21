@@ -31,6 +31,10 @@ header > div:first-child {
     align-content: center;
 }
 
+header nav {
+    display: none;
+}
+
 header span {
     background-color: rgba(0,0,0,1);
     padding: 1.6rem 0.9rem 1.6rem 0.9rem; 
@@ -67,14 +71,41 @@ header span {
     #black-header {
         width: 100vw;
         padding: 0 10vw;
+        margin: 0;
     }
 
     header h1 {
-        flex: 1;
-        margin: 0 2rem;
+        /* flex: 1; */
     }
 
     header span {
         border-top: 2px solid rgba(255,255,255,0.3);
+    }
+}
+
+@media screen and (min-width: 824px) {
+    header nav {
+        display: flex;
+        font-weight: 400;
+    }
+    
+    header nav ul {
+        display: flex;
+        list-style-type: none;
+        gap: 3.2rem;
+        align-items: center;
+    }
+
+    header nav ul a {
+        text-decoration: none;
+    }
+
+    header nav ul li {
+        color: white;
+    }
+
+    header nav ul li:hover {
+        cursor:pointer;
+        color: var(--dark-orange);
     }
 }

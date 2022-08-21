@@ -1,48 +1,41 @@
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import HamburgerIcon from "./assets/shared/tablet/icon-hamburger.svg";
 import CartIcon from './assets/shared/desktop/icon-cart.svg'
-import './_styles/header.css';
 import CartSummary from './cartSummary';
 import { RootState } from '../index';
 
-const Header = ({ category }: { category: string | undefined }) => {
-    let { quantity }: { quantity: number } = useSelector((state: RootState) => {
-        console.log(state);
-        return state.cart.reduce((previous, next) => {
-            return { quantity: previous.quantity + next.quantity };
-        }, { quantity: 0});
-    });
+import './_styles/header.css';
 
-    const toggleSummaryDisplay = () => {
-        const cartSummary: Element | null = document.querySelector('.cart-summary');
-        const images: NodeListOf<HTMLImageElement> = document.querySelectorAll('img');
-        const mainDiv = document.querySelector('#root > div');
-        console.log(cartSummary);
-        if(!cartSummary) return;
-        if(cartSummary?.classList.contains('show-cart-summary')) {
-            cartSummary.classList.remove('show-cart-summary');
-            cartSummary.classList.add('hide-cart-summary');
-            if(mainDiv) mainDiv.classList.remove('blur');
-        }else {
-            cartSummary.classList.remove('hide-cart-summary');
-            cartSummary.classList.add('show-cart-summary');
-            if(mainDiv) mainDiv.classList.add('blur');
-        }
-    }
+const Header = ({ category }: { category: string | undefined }) => {
+    const [ showCart, setShowCart ] = useState<boolean>(false);
+
+    let { quantity }: { quantity: number } = useSelector((state: RootState) => {
+        return state.cart?.reduce((previous, next) => {
+            return { quantity: previous.quantity + next.quantity };
+        }, { quantity: 0}) || {quantity: 0};
+    });
 
     return (
         <header id={`${category !== undefined? 'black-header': ""}`}>
             <div>
-            <div>
-                <img src={HamburgerIcon} />
-                </div>
                 <h1>audiophile</h1>
+                <nav>
+                    <ul>
+                        <Link to="/"><li>HOME</li></Link>
+                        <Link to="/products/headphones"><li>HEADPHONES</li></Link>
+                        <Link to="/products/speakers"><li>SPEAKERS</li></Link>
+                        <Link to="/products/earphones"><li>EARPHONES</li></Link>
+                    </ul>
+
+                </nav>
                 <div className="cart-icon">
-                    <img src={CartIcon} onClick={toggleSummaryDisplay}/>
+                    <img src={CartIcon} onClick={() => setShowCart((prev) => !prev)}/>
                     { quantity && quantity > 0 ? <div className="cart-items">{ quantity }</div> : null }
                     <CartSummary 
-                        defaultState='hide'
+                        defaultState={showCart}
+                        setShowCart={setShowCart}
                     />
                 </div>
             </div>

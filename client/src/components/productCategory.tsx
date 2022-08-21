@@ -7,7 +7,7 @@ import './_styles/productCategory.css';
 const ProductCategory = (): JSX.Element => {
     return (
         <section className="product-category">
-            <CategoryCard 
+            <CategoryCard
                 imagePath={headphones} 
                 categoryName="HEADPHONES"
             />

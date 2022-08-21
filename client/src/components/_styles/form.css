@@ -14,7 +14,7 @@
     letter-spacing: 2px;
 }
 
-form {
+.form-section section {
     display: flex;
     flex-direction: column;
     align-content: center;

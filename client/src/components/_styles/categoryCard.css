@@ -18,6 +18,16 @@
     z-index: -2;
 }
 
+.category-card a {
+    position: relative;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.category-card button:hover {
+    cursor: pointer;
+}
+
 .category-card div:first-child img {
     position: absolute;
     transform: translateY(-30%) translateX(-50%);

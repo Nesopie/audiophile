@@ -39,7 +39,8 @@ export interface Products {
     features: string;
     includes: Array<Includes>
     gallery: Gallery;
-    others: Array<RecommendedProducts>
+    others: Array<RecommendedProducts>;
+    reviews: Array<Review>
 }
 
 export interface CartItem {
@@ -53,4 +54,14 @@ export interface User {
     username: string;
     cart: Array<CartItem>;
     token: string | null;
+}
+
+export interface Review {
+    _id: string;
+    username: string,
+    date: Date,
+    content: string,
+    upvotes: number,
+    upvotedBy: Array<User>
+    downvotedBy: Array<User>
 }

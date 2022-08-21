@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive'
+import { Link } from 'react-router-dom';
 
 import zx9Mobile from './assets/product-zx9-speaker/mobile/image-category-page-preview.png';
 import zx9Desktop from './assets/home/desktop/image-speaker-zx9.png';
@@ -22,10 +23,14 @@ const ZX9Card = (): JSX.Element => {
                 <div>
                     Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
                 </div>
+                <Link
+                    to="/products/speakers/zx9-speaker"
+                >
                 <Button 
                     buttonLabel='SEE PRODUCT' 
                     buttonColor='black'
                 />
+                </Link>
             </div>
         </section>
     );

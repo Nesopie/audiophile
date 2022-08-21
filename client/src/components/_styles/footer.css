@@ -40,6 +40,11 @@ footer > div:first-child {
     letter-spacing: 2px;
 }
 
+.links-container a:hover {
+    color: var(--dark-orange);
+    cursor: pointer;
+}
+
 .footer-text {
     display: flex;
     flex-direction: column;
@@ -65,6 +70,11 @@ footer > div:first-child {
 
 .socials img {
     z-index: 2;
+}
+
+.socials img:hover {
+    cursor: pointer;
+    filter: invert(46%) sepia(58%) saturate(507%) hue-rotate(337deg) brightness(108%) contrast(88%);
 }
 
 @media screen and (min-width: 480px) {

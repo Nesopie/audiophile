@@ -1,8 +1,8 @@
-
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { store } from '..';
-import { RecommendedProducts, CartItem, Products } from '../types';
-import typeGuard from './typeGuard';
+import { CartItem } from '../types';
 
 const getCategoryFromSlug = (slug: string) => {
     let i;
@@ -43,23 +43,38 @@ const sanitizeCart = (cart: any): Array<CartItem> => {
     });
 }
 
-const useUser = ():void => {
+const OnLoadWrapper = ({ children }: { children: React.ReactNode}): JSX.Element => {
     const dispatch = useDispatch();
-    if(store.getState().username !== "")
-        return;
-    let user = localStorage.getItem("user");
-    if(!user)
-        return;
-    user = JSON.parse(user);
-    if(typeGuard.isUser(user)) {
+    useEffect(() => {
+        if(store.getState()?.username)
+            return;
+        const userString = localStorage.getItem("user");
+        if(!userString)
+            return;
+        const user = JSON.parse(userString);
         dispatch({ 
-            type: 'SET_USER_LS ',
+            type: 'SET_USER_LS',
             user: {
                 username: user.username,
                 token: user.token,
                 cart: user.cart
             }});
-    }
+    }, []);
+
+    return (
+        <>
+            { children }
+        </>
+    );
 }
 
-export default { getCategoryFromSlug, getTotalPrice, removeCategoryFromName, sanitizeCart, useUser }
+const getTotal = (cartProducts: Array<CartItem>): number => {
+    let total: number = 0;
+    cartProducts?.forEach((cartProduct: CartItem) => {
+        total += (+cartProduct.quantity * +cartProduct.price);
+    });
+
+    return total === NaN ? 0 : total;
+}
+
+export default { getCategoryFromSlug, getTotalPrice, removeCategoryFromName, sanitizeCart, OnLoadWrapper, getTotal }

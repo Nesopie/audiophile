@@ -5,9 +5,9 @@ const Form = ({ formClass, formName, children }: {formClass: string, formName: s
     return(
         <section className={`section-${formClass} form-section`}>
             {formName ? <h4>{formName}</h4> : null}
-            <form className={`${formClass}`}>
+            <section className={`${formClass}`}>
                 {children}
-            </form>
+            </section>
         </section>
     );
 }

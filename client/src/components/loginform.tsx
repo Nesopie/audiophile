@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import React from 'react';
-
+import { useForm, SubmitHandler } from 'react-hook-form'
 import typeGuard from '../utils/typeGuard';
 import Button from './button';
 import Input from './input';
@@ -8,11 +8,13 @@ import Input from './input';
 import { CartItem } from '../types';
 import helper from '../utils/helper';
 import userService from '../services/users';
+import { IFormValues } from './forms';
 
 const LoginForm = (): JSX.Element => {
+    const { handleSubmit, register } = useForm<IFormValues>();
     const dispatch = useDispatch();
 
-    const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit1 = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.target as HTMLFormElement;  
         const username: HTMLInputElement | null = form.querySelector('#username');
@@ -33,7 +35,7 @@ const LoginForm = (): JSX.Element => {
         }
 
         try {
-            const data: { token: string, username: string, cart: Array<CartItem> } = await userService.getUserData(user);
+            const data = await userService.getUserData(user);
             dispatch({ type: 'SET_USER', username: data.username, cart: data.cart, token: data.token });
         }catch(error: unknown) {
             console.log(error);
@@ -44,16 +46,18 @@ const LoginForm = (): JSX.Element => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit1}>
             <Input 
                 label='username'
                 placeholder='username'
                 type="text"
+                register={register}
             />
             <Input 
                 label='password'
                 placeholder='password'
                 type="text"
+                register={register}
             />
             <Button 
                 type='submit'

@@ -1,10 +1,10 @@
 // These schemas are required to construct the other schemas
 import mongoose from 'mongoose';
-import { Images, Includes, Gallery, RecommendedProducts, CartItem } from '../types';
+import { Images, Includes, Gallery, RecommendedProducts, CartItem, Review } from '../types';
 
 const Schema = mongoose.Schema;
 
-export const ImagesSchema: mongoose.Schema = new Schema<Images>(
+export const ImagesSchema = new Schema<Images>(
     {
         mobile: { type: String },
         tablet: { type: String },
@@ -12,14 +12,14 @@ export const ImagesSchema: mongoose.Schema = new Schema<Images>(
     }
 );
 
-export const IncludesSchema: mongoose.Schema = new Schema<Includes>(
+export const IncludesSchema = new Schema<Includes>(
     {
         quantity: Number,
         item: String
     }
 )
 
-export const GallerySchema: mongoose.Schema = new Schema<Gallery>(
+export const GallerySchema = new Schema<Gallery>(
     {
         first: ImagesSchema,
         second: ImagesSchema,
@@ -27,7 +27,7 @@ export const GallerySchema: mongoose.Schema = new Schema<Gallery>(
     }
 );
 
-export const RecommendedProductsSchema: mongoose.Schema = new Schema<RecommendedProducts>(
+export const RecommendedProductsSchema = new Schema<RecommendedProducts>(
     {
         slug: String,
         name: String,
@@ -35,7 +35,7 @@ export const RecommendedProductsSchema: mongoose.Schema = new Schema<Recommended
     }
 );
 
-export const CartItemSchema: mongoose.Schema = new Schema<CartItem>(
+export const CartItemSchema = new Schema<CartItem>(
     {
         product: {
             type: mongoose.Schema.Types.ObjectId,
@@ -44,3 +44,19 @@ export const CartItemSchema: mongoose.Schema = new Schema<CartItem>(
         quantity: Number
     }
 );
+
+export const ReviewSchema = new Schema<Review>(
+    {
+        username: String,
+        content: String,
+        date: Date,
+        upvotedBy: {
+            type: [mongoose.Schema.Types.ObjectId],
+            ref: 'User',
+        },
+        downvotedBy: {
+            type: [ mongoose.Schema.Types.ObjectId],
+            ref: 'User'
+        }
+    }
+)

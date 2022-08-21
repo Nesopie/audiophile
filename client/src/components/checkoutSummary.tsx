@@ -1,33 +1,18 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import uniqid from 'uniqid'
-import { useEffect } from 'react';
-
-import Button from './button';
-import './_styles/checkoutSummary.css';
+import React from 'react';
 
 import { RootState } from '../index';
 import { CartItem } from '../types';
 import helper from '../utils/helper';
 
-const CheckoutSummary = (): JSX.Element => {
+import './_styles/checkoutSummary.css';
+
+const CheckoutSummary = ({ children }: { children: React.ReactNode}): JSX.Element => {
     const cartProducts = (useSelector((state: RootState) => state.cart));
-    const dispatch = useDispatch();
-    let { quantity }: { quantity: number } = cartProducts.reduce((previous, next) => {
+    let { quantity }: { quantity: number } = cartProducts ? cartProducts.reduce((previous, next) => {
             return { quantity: previous.quantity + next.quantity };
-        }, { quantity: 0});
-
-    const getTotal = (): number => {
-        let total: number = 0;
-        cartProducts.forEach((cartProduct: CartItem) => {
-            total += (+cartProduct.quantity * +cartProduct.price);
-        });
-
-        return total === NaN ? 0 : total;
-    }
-
-    useEffect(() => {
-        dispatch({ type: 'SET_USER_LS' })
-    }, []);
+        }, { quantity: 0}) : { quantity: 0};
 
     return(
         <div className='checkout-summary'>
@@ -35,7 +20,7 @@ const CheckoutSummary = (): JSX.Element => {
                 <h2>CART({quantity})</h2>
                 <button>Remove all</button>
             </div>
-            {cartProducts.map((cartProduct: CartItem, index: number) => {
+            {cartProducts?.map((cartProduct: CartItem, index: number) => {
                 return (
                     <div className='checkout-products' key={uniqid()}>
                         <div>
@@ -45,18 +30,29 @@ const CheckoutSummary = (): JSX.Element => {
                                 <div>$ {cartProduct.price}</div>
                             </div>
                         </div>
-                        x{ cartProduct.quantity }
+                        x { cartProduct.quantity }
                     </div>
                 )
             })}
-            <div className="total">
-                <div>TOTAL</div>
-                <div>$ {getTotal()}</div>
+            <div className="checkout-meta">
+                <div className="checkout-meta-item">
+                    <div>TOTAL</div>
+                    <div>$ {helper.getTotal(cartProducts)}</div>
+                </div>
+                <div className="checkout-meta-item">
+                    <div>SHIPPING</div>
+                    <div>$ 50</div>
+                </div>
+                <div className="checkout-meta-item">
+                    <div>VAT (INCLUDED)</div>
+                    <div>$ {Math.round(0.2 * helper.getTotal(cartProducts))}</div>
+                </div>
+                <div className="checkout-meta-item grand-total">
+                    <div>GRAND TOTAL</div>
+                    <div>$ {Math.round(1.2 * helper.getTotal(cartProducts) + 50)}</div>
+                </div>
             </div>
-            <Button 
-                buttonLabel="CHECKOUT"
-                buttonColor="orange"
-            />
+            { children }
         </div>
     );
 }

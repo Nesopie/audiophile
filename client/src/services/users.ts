@@ -1,12 +1,12 @@
-import axios, { AxiosResponse } from 'axios';
-import { CartItem } from '../types';
+import axios from 'axios';
+import { User } from '../types';
 import helper from '../utils/helper';
 
-const loginBaseUrl: string = 'http://localhost:3001/api/login';
+const loginBaseUrl = 'http://localhost:3001/api/login';
 const userBaseUrl = 'http://localhost:3001/api/users';
 
-const getUserData = async (user: { username: string, password: string }): Promise<{ token: string, username: string, cart: Array<CartItem> }> => {
-    const response: AxiosResponse = await axios.post(loginBaseUrl, user);
+const getUserData = async (user: { username: string, password: string }): Promise<User> => {
+    const response = await axios.post<User>(loginBaseUrl, user);
     return response.data;
 }
 
@@ -50,4 +50,16 @@ const deleteCartItem = (index: number): Function => {
     }
 }
 
-export default { getUserData, addCartItem, changeQuantity, deleteCartItem };
+const deleteCart = (): Function => {
+    return async (dispatch: Function, getState: Function) => {
+        const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { type: 'delete_all' },
+        {
+            headers: {
+                'authorization': `bearer ${getState().token}`
+            }
+        });
+        dispatch({ type: 'SET_CART', cart: []});
+    }
+}
+
+export default { getUserData, addCartItem, changeQuantity, deleteCartItem, deleteCart };

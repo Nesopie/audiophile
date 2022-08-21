@@ -4,11 +4,12 @@ import uniqid from 'uniqid';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch } from "react-redux";
 
+import { store } from "..";
 import Button from "./button";
 import ItemCounter from "./itemCounter";
-import './_styles/productOverview.css';
-
 import userService from "../services/users";
+
+import './_styles/productOverview.css';
 
 const ProductOverview = ({ 
     imagePaths,
@@ -41,8 +42,16 @@ const ProductOverview = ({
             price,
             quantity
         }
+        const cart = store.getState().cart;
+        let index = -1;
 
-        dispatch(userService.addCartItem(newProduct));
+        cart.forEach((cartItem, idx) => {
+            if(cartItem.name === name)
+                index = idx;
+        });
+        index === -1  
+        ? dispatch(userService.addCartItem(newProduct))
+        : dispatch(userService.changeQuantity(index, quantity));
     }
 
     let galleryImages = [];

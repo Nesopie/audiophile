@@ -3,12 +3,17 @@ import Footer from './footer';
 import Forms from './forms';
 import CheckoutSummary from './checkoutSummary';
 
-const Checkout = (): JSX.Element => {
-    return(
-        <div>
-            <Header category='plain'/>
-            <Forms />
-            <CheckoutSummary />
+import './_styles/checkout.css';
+
+const Checkout = (): JSX.Element => {return(
+        <div className='checkout-page'>
+            <Header category=''/>
+            <div className="checkout-container">
+                <Forms/>
+                <CheckoutSummary>
+                    <button type="submit" className={`orange button`} form="checkout">CONTINUE & PAY</button>
+                </CheckoutSummary>
+            </div>
             <Footer />
         </div>
     );

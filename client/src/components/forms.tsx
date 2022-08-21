@@ -1,12 +1,37 @@
+import { useForm, SubmitHandler } from 'react-hook-form'
 import Form from './form';
 import Input from './input';
 import RadioInput from './radioInput';
 import './_styles/forms.css';
 import CashOnDelivery from './cashOnDelivery';
+import { useState } from 'react';
+import PaymentCompleted from './paymentCompleted';
+
+export interface IFormValues {
+    'Name': string;
+    'Email Address': string;
+    'Phone Number': string;
+    'Your Address': string;
+    'ZIP Code': string;
+    'City': string;
+    'Country': string;
+    'e-Money Number': string;
+    'e-Money PIN': string;
+    'username': string;
+    'password': string;
+}
 
 const Forms = ():JSX.Element => {
+    const { register, handleSubmit, formState: { errors } } = useForm<IFormValues>();
+    const [ show, setShow ] = useState<boolean>(false);
+
+    const onSubmit: SubmitHandler<IFormValues> = (data) => {
+        setShow(true);
+    }
+
     return (
-        <section className='checkout'>
+        <form id="checkout" className='checkout' onSubmit={handleSubmit(onSubmit)}>
+            <h2>Checkout</h2>
             <Form
                 formClass='billing-details'
                 formName='BILLING DETAILS'
@@ -15,16 +40,36 @@ const Forms = ():JSX.Element => {
                     label='Name'
                     placeholder='Ayman'
                     type="text"
+                    register={register}
+                    required={true}
+                    error={errors["Name"]}
                 />
                 <Input 
                     label='Email Address'
                     placeholder='ayman@gmail.com'
-                    type="text"
+                    type="email"
+                    register={register}
+                    required={true}
+                    error={errors["Email Address"]}
+                    other={
+                        {
+                            pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                        }
+                    }
                 />
                 <Input 
                     label='Phone Number'
                     placeholder='+91 1234567890'
                     type="text"
+                    register={register}
+                    required={true}
+                    error={errors["Phone Number"]}
+                    other={
+                        {
+                            minLength: 10,
+                            maxLength: 10
+                        }
+                    }
                 />
             </Form>
             <Form
@@ -35,48 +80,89 @@ const Forms = ():JSX.Element => {
                     label='Your Address'
                     placeholder='India'
                     type="text"
+                    register={register}
+                    error={errors["Your Address"]}
+                    required={true}
+                    other={
+                        {
+                            minLength: 8,
+                            maxLength: 30
+                        }
+                    }
                 />
                 <Input 
                     label='ZIP Code'
                     placeholder='123456'
                     type="text"
+                    register={register}
+                    error={errors["ZIP Code"]}
+                    required={true}
+                    other={{
+                        minLength: 6,
+                        maxLength: 6
+                    }}
                 />
                 <Input 
                     label='City'
                     placeholder='Hyderabad'
                     type="text"
+                    register={register}
+                    error={errors["City"]}
+                    required={true}
+                    other={{
+                        minLength: 5,
+                        maxLength: 25
+                    }}
                 />
                 <Input 
                     label='Country'
                     placeholder='India'
                     type="text"
+                    register={register}
+                    required={true}
+                    error={errors["Country"]}
+                    other={{
+                        minLength: 3,
+                        maxLength: 25
+                    }}
                 />
             </Form>
             <Form
                 formClass='payment-details'
                 formName='PAYMENT DETAILS'
             >
-                <RadioInput 
-                    label='e-Money'
-                />
-                <RadioInput 
-                    label='Cash on Delivery'
-                />
+                <div>
+                    <strong>Payment Method</strong> 
+                </div>
+                <div>
+                    <RadioInput 
+                        label='e-Money'
+                    />
+                    <RadioInput 
+                        label='Cash on Delivery'
+                    />
+                </div>
             </Form>
             <div className='form-section e-money' style={{display: 'none'}}>
                 <Input 
                     label='e-Money Number'
                     placeholder='1234567890'
                     type='text'
+                    register={register}
                 />
                 <Input 
                     label='e-Money PIN'
                     placeholder='1234'
                     type='text'
+                    register={register}
                 />
             </div>
             <CashOnDelivery />
-        </section>
+            <PaymentCompleted 
+                show={show}
+                onClose={() => setShow(false)}
+            />
+        </form>
     );
 }
 

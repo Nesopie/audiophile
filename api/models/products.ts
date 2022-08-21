@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 import { Products } from '../types';
-import { ImagesSchema, IncludesSchema, GallerySchema, RecommendedProductsSchema } from './baseModels';
+import { ImagesSchema, IncludesSchema, GallerySchema, RecommendedProductsSchema, ReviewSchema } from './baseModels';
 
 const Schema = mongoose.Schema;
 
-const ProductSchema: mongoose.Schema = new Schema<Products>(
+const ProductSchema = new Schema<Products>(
     {
         slug: String,
         name: String,
@@ -20,8 +20,10 @@ const ProductSchema: mongoose.Schema = new Schema<Products>(
         features: String,
         includes: [ IncludesSchema ],
         gallery: GallerySchema,
-        others: [ RecommendedProductsSchema ]
+        others: [ RecommendedProductsSchema ],
+        reviews: [ ReviewSchema ]
     }   
 );
 
-module.exports = mongoose.model('Product', ProductSchema);
+const Product =  mongoose.model('Product', ProductSchema);
+module.exports = {Product}

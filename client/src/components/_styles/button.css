@@ -7,6 +7,11 @@
     font-size: 0.8rem;
     font-weight: 400;
     width: fit-content;
+    transition: all 0.3s ease-out;
+}
+
+.button:hover {
+    cursor: pointer;
 }
 
 .orange { 
@@ -21,9 +26,20 @@
 .black {
     color: white;
     background: black;
+    border: 2px solid black;
+}
+
+.black:hover {
+    background: rgba(0,0,0,0.6);
+    border: 2px solid white;
 }
 
 .transparent {
     background-color: rgba(0,0,0,0);
     border: 2px solid black;
+}
+
+.transparent:hover {
+    background-color: black;
+    color: white;
 }

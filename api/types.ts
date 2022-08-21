@@ -38,10 +38,27 @@ export interface Products {
     features: string;
     includes: Array<Includes>
     gallery: Gallery;
-    others: Array<RecommendedProducts>
+    others: Array<RecommendedProducts>,
+    reviews: Array<Review>
 }
 
 export interface CartItem {
     product: mongoose.Schema.Types.ObjectId;
     quantity: number;
+}
+
+export interface IUser {
+    username: string;
+    name: string;
+    passwordHash: string;
+    cart: Array<CartItem>;
+}
+
+export interface Review {
+    id: mongoose.Schema.Types.ObjectId;
+    username: string,
+    date: Date,
+    content: string,
+    upvotedBy: Array<mongoose.Schema.Types.ObjectId>;
+    downvotedBy: Array<mongoose.Schema.Types.ObjectId>;
 }
