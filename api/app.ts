@@ -29,3 +29,10 @@ app.use('/api/login', require(path.join(__dirname, 'routes', 'loginRouter')));
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client', 'build')));
+    app.get('/*', (_req, res) => {
+        res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
+    });
+}
