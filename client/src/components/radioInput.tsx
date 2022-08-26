@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './_styles/input.css';
 
 const RadioInput = ({ label, setShowCash }: { label: string, setShowCash: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element => {
@@ -12,6 +13,14 @@ const RadioInput = ({ label, setShowCash }: { label: string, setShowCash: React.
             }
         })
     }
+
+    useEffect(() => {
+        const button: HTMLInputElement | null = document.querySelector('#checkout > section.section-payment-details.form-section > section > div:nth-child(2) > div:nth-child(1) > input[type=radio]');
+        if(!button)
+            return;
+        button.checked = true;
+        button.parentElement?.setAttribute("style", "border: 1px solid #d87c4a");
+    }, [])
 
     return(
         <div className='radio-input-div' >

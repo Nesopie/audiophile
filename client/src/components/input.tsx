@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useEffect }  from 'react';
 import { UseFormRegister, Path, FieldError } from 'react-hook-form';
 import { IFormValues } from './forms';
 
@@ -30,10 +30,14 @@ const Input = ({ label, placeholder, type, register, required, error, other }: I
         pattern: () => 'Wrong format'
     }
 
+    useEffect(() => {
+        console.log(label, error);
+    })
+
     return(
         <div>
             <div className="input-meta">
-                <label htmlFor={`${label}`}>{label}</label>
+                <label htmlFor={label}>{label}</label>
                 {error && <span>{errorMessageMapper[error.type as myErrors]()}</span>}
             </div>
             <div className='input-div'>

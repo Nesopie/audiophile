@@ -2,11 +2,12 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import Form from './form';
 import Input from './input';
 import RadioInput from './radioInput';
-import './_styles/forms.css';
 import CashOnDelivery from './cashOnDelivery';
 import { useState } from 'react';
 import PaymentCompleted from './paymentCompleted';
 import userService from '../services/users'
+
+import './_styles/forms.css';
 
 export interface IFormValues {
     'Name': string;
@@ -119,10 +120,12 @@ const Forms = ():JSX.Element => {
                     register={register}
                     error={errors["City"]}
                     required={true}
-                    other={{
-                        minLength: 5,
-                        maxLength: 25
-                    }}
+                    other={
+                        {
+                            minLength: 5,
+                            maxLength: 25
+                        }
+                    }
                 />
                 <Input 
                     label='Country'
@@ -131,10 +134,12 @@ const Forms = ():JSX.Element => {
                     register={register}
                     required={true}
                     error={errors["Country"]}
-                    other={{
-                        minLength: 3,
-                        maxLength: 25
-                    }}
+                    other={
+                        {
+                            minLength: 3,
+                            maxLength: 25
+                        }
+                    }
                 />
             </Form>
             <Form
@@ -155,20 +160,6 @@ const Forms = ():JSX.Element => {
                     />
                 </div>
             </Form>
-            <div className='form-section e-money' style={{display: 'none'}}>
-                <Input 
-                    label='e-Money Number'
-                    placeholder='1234567890'
-                    type='text'
-                    register={register}
-                />
-                <Input 
-                    label='e-Money PIN'
-                    placeholder='1234'
-                    type='text'
-                    register={register}
-                />
-            </div>
             { showCash ? 
                 <CashOnDelivery/> :
                 <div className='form-section e-money'>
@@ -177,12 +168,28 @@ const Forms = ():JSX.Element => {
                         placeholder='1234567890'
                         type='text'
                         register={register}
+                        error={errors["e-Money Number"]}
+                        other={
+                            {
+                                minLength: 12,
+                                maxLength: 12
+                            }
+                        }
+                        required={true}
                     />
                     <Input 
                         label='e-Money PIN'
                         placeholder='1234'
                         type='text'
                         register={register}
+                        error={errors["e-Money PIN"]}
+                        other={
+                            {
+                                minLength: 4,
+                                maxLength: 4
+                            }
+                        }
+                        required={true}
                     />
             </div>
             }

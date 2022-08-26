@@ -11,7 +11,6 @@ const CartSummaryItemCounter = ({ index }: { index: number }): JSX.Element => {
 
     const increment = () => {
         dispatch(userService.changeQuantity(index, 1));
-        console.log(cartProducts);
     }
 
     const decrement = () => {

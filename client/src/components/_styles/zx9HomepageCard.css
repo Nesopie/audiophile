@@ -14,7 +14,6 @@
 
 .zx9-card img {
     padding-top: 3rem;
-    width: 90vw;
     background-image: radial-gradient(circle at center center, var(--dark-orange) 0%, var(--dark-orange) 55%, white 55.2%, var(--dark-orange) 55.5%, var(--dark-orange) 70%, white 70.2%, var(--dark-orange) 70.5%, var(--dark-orange) 100%);
 }
 

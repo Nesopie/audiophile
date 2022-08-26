@@ -16,4 +16,6 @@ const isUser = (user: unknown): user is User => {
         && (user as User).token    !== undefined;
 }
 
-export default { isAxiosError, isUser }
+const typeGuard = { isAxiosError, isUser };
+
+export default typeGuard;

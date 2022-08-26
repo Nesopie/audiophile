@@ -77,4 +77,6 @@ const getTotal = (cartProducts: Array<CartItem>): number => {
     return total === NaN ? 0 : total;
 }
 
-export default { getCategoryFromSlug, getTotalPrice, removeCategoryFromName, sanitizeCart, OnLoadWrapper, getTotal }
+const helper = { getCategoryFromSlug, getTotalPrice, removeCategoryFromName, sanitizeCart, OnLoadWrapper, getTotal };
+
+export default helper;

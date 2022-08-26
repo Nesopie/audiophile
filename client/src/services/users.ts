@@ -12,63 +12,94 @@ const getUserData = async (user: { username: string, password: string }): Promis
 
 const registerUser = async (user: { username: string, password: string}): Promise<User> => {
     const response = await axios.post<User>(userBaseUrl, user);
-    if(response.status >= 400) {
-        console.log(response.data)
+    if(response.status >= 400) 
         return response.data;
-    }
     return await getUserData(user);
 }
 
 const addCartItem = ( newProduct: any ) => {
     return async (dispatch: Function, getState: Function) => {
-        const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { newCartProduct: newProduct },
-        {
-            headers: {
-                'authorization': `bearer ${getState().token}`
+        try {
+            const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { newCartProduct: newProduct },
+            {
+                headers: {
+                    'authorization': `bearer ${getState().token}`
+                }
+            });
+            if(response.status === 401) throw new Error(response.data);
+            const result = helper.sanitizeCart(response.data);
+            dispatch({ type: 'SET_CART', cart: result });
+        }catch(err: unknown) {
+            if(err instanceof Error) {
+                window.location.href = `${window.location.origin}/login`;
+                dispatch({ type: 'RESET_USER' });
             }
-        });
-        const result = helper.sanitizeCart(response.data);
-        dispatch({ type: 'SET_CART', cart: result });
+        }
     }
 }
 
 const changeQuantity = (index: number, quantityChange: number): Function => {
     return async (dispatch: Function, getState: Function) => {
-        const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { index, quantityChange },
-        {
-            headers: {
-                'authorization': `bearer ${getState().token}`
+        try {
+            const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { index, quantityChange },
+            {
+                headers: {
+                    'authorization': `bearer ${getState().token}`
+                }
+            });
+            const result = helper.sanitizeCart(response.data);
+            dispatch({ type: 'SET_CART', cart: result});
+        }catch(err: unknown) {
+            if(err instanceof Error) {
+                window.location.href = `${window.location.origin}/login`;
+                dispatch({ type: 'RESET_USER' });
             }
-        });
-        const result = helper.sanitizeCart(response.data);
-        dispatch({ type: 'SET_CART', cart: result});
+        }
     }
 }
 
 const deleteCartItem = (index: number): Function => {
     return async (dispatch: Function, getState: Function) => {
-        const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { index },
-        {
-            headers: {
-                'authorization': `bearer ${getState().token}`
+        try {
+            const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { index },
+            {
+                headers: {
+                    'authorization': `bearer ${getState().token}`
+                }
+            });
+    
+            const result = helper.sanitizeCart(response.data);
+            dispatch({ type: 'SET_CART', cart: result });
+        }catch(err: unknown) {
+            if(err instanceof Error) {
+                window.location.href = `${window.location.origin}/login`;
+                dispatch({ type: 'RESET_USER' });
             }
-        });
-
-        const result = helper.sanitizeCart(response.data);
-        dispatch({ type: 'SET_CART', cart: result });
+        }
+        
     }
 }
 
 const deleteCart = (): Function => {
     return async (dispatch: Function, getState: Function) => {
-        const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { type: 'delete_all' },
-        {
-            headers: {
-                'authorization': `bearer ${getState().token}`
+        try {
+            const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { type: 'delete_all' },
+            {
+                headers: {
+                    'authorization': `bearer ${getState().token}`
+                }
+            });
+            if(response.status === 401) throw new Error(response.data);
+            dispatch({ type: 'SET_CART', cart: []});
+        }catch(err: unknown) {
+            if(err instanceof Error) {
+                window.location.href = `${window.location.origin}/login`;
+                dispatch({ type: 'RESET_USER' });
             }
-        });
-        dispatch({ type: 'SET_CART', cart: []});
+        }
     }
 }
 
-export default { getUserData, registerUser, addCartItem, changeQuantity, deleteCartItem, deleteCart };
+const userService = { getUserData, registerUser, addCartItem, changeQuantity, deleteCartItem, deleteCart };
+
+export default userService;

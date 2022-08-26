@@ -64,7 +64,7 @@ const ProductOverview = ({
             <div>
                 <div>
                     <div>
-                        <img src={require(`${isMobile ? imagePaths.mobile : isTablet ?  imagePaths.tablet : imagePaths.desktop}`)}/>
+                        <img src={require(`${isMobile ? imagePaths.mobile : isTablet ?  imagePaths.tablet : imagePaths.desktop}`)} alt="main product"/>
                         <div className='product-brief'>
                             {newProduct ? <div className="new-product">NEW PRODUCT</div> : null}
                             <h2>{ name }</h2>
@@ -101,10 +101,10 @@ const ProductOverview = ({
                     </div>
                     <div className="gallery">
                         <div>
-                            <img src={require(`${galleryImages[0]}`)}/>
-                            <img src={require(`${galleryImages[2]}`)}/>
+                            <img src={require(`${galleryImages[0]}`)} alt="gallery 1"/>
+                            <img src={require(`${galleryImages[2]}`)} alt="gallery 2"/>
                         </div>
-                            <img src={require(`${galleryImages[1]}`)}/>
+                            <img src={require(`${galleryImages[1]}`)} alt="gallery 3"/>
                     </div>
                 </div>
             </div>

@@ -27,4 +27,6 @@ const getRecommendedProducts = async ( recommendedProducts : Array<RecommendedPr
     return response.map((singleResponse: AxiosResponse) => singleResponse.data[0]);
 }
 
-export default { getProductsByCategory, getProductBySlug, getRecommendedProducts }
+const productService = { getProductsByCategory, getProductBySlug, getRecommendedProducts };
+
+export default productService;

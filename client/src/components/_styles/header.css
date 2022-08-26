@@ -61,6 +61,17 @@ header span {
     right: -0.45rem;
 }
 
+header a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+header a:hover {
+    color: var(--dark-orange);
+}
+
 @media screen and (min-width: 480px) {  
     header {
         width: 80vw;
@@ -72,10 +83,6 @@ header span {
         width: 100vw;
         padding: 0 10vw;
         margin: 0;
-    }
-
-    header h1 {
-        /* flex: 1; */
     }
 
     header span {

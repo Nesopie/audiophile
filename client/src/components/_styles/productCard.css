@@ -45,14 +45,12 @@
 
 @media screen and (min-width: 480px) {
     .product-category {
-        display: grid;
+        display: grid !important;
         width: 80vw;
-        grid-template-columns: repeat(3,1fr);
+        grid-template-columns: repeat(3,1fr) !important;
         grid-gap: 5vw;
     }
-}
 
-@media screen and (min-width: 480px) {
     .product-card {
         width: 80vw;
     }

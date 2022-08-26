@@ -108,6 +108,10 @@
 }
 
 @media screen and (min-width: 824px) {
+    .checkout-summary {
+        margin: 2rem auto !important;
+    }
+
     .checkout-meta-item.grand-total {
         flex-direction: row;
     }

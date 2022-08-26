@@ -31,7 +31,6 @@ const Recommendations = ({ recommendedProducts }: { recommendedProducts: Array<R
             <h1>YOU MAY ALSO LIKE</h1>
             <div>
                 {!isLoading && recommendations.map((recommendation, index) => {
-                    console.log(recommendations);
                     return (
                         <div key={uniqid()}>
                             <img src={require(`./assets/shared/${ isMobile ? 'mobile' : isTablet ? 'tablet' : 'desktop' }/image-${recommendedProducts[index].slug}.jpg`)} />

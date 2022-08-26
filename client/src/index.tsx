@@ -8,7 +8,6 @@ import App from './App';
 import ProductPage from './components/productPage';
 import ProductsPage from './components/productsPage';
 import Checkout from './components/checkout';
-// import LoginForm from './components/loginform';
 import LoginPage from './components/loginPage';
 import './index.css';
 
@@ -30,12 +29,15 @@ const userReducer = (state: User = { username: "", cart: [], token: null }, acti
             newState.cart = action.cart;
             localStorage.setItem('user', JSON.stringify(newState));
             return {...newState};
-        case('SET_USER_LS'):
+        case('SET_USER_LS') :
             newState = action.user;
             return { ...newState };
         case('GET_STATE') :
-        console.log(state);
             return state;
+        case('RESET_USER'):
+            const resetUser = { username: "", cart: [], token: null };
+            localStorage.setItem('user', JSON.stringify(resetUser));
+            return resetUser;
         default: 
             return state;
     }
