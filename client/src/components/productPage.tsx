@@ -22,7 +22,7 @@ const ProductPage = (): JSX.Element => {
     useEffect(() => {
         window.scroll(0,0);
         productService.getProductBySlug(category, slug)
-        .then(result => setProduct(result[0]));
+            .then(result => setProduct(result[0]));
     }, [window.location.pathname]);
 
     return(

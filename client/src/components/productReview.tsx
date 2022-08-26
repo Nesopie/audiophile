@@ -19,6 +19,7 @@ interface IProductReviewProps {
 
 const ProductReview = ({ username, date, content, upvotes, upvoted, id, setReviews }: IProductReviewProps) => {
     const { category, slug } = useParams();
+    
     const handleUpvote = async (event: React.MouseEvent<HTMLButtonElement>) => {
         const response = await axios.patch<Array<Review>>(`http://localhost:3001/api/products/${category}/${slug}`, {
             type: 'upvote',

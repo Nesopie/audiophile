@@ -62,6 +62,7 @@ const CartSummary = ({ defaultState, setShowCart }: { defaultState: boolean, set
                 <Button
                     buttonLabel="CHECKOUT"
                     buttonColor="orange"
+                    handleClick={() => window.location.href = `${window.location.origin}/checkout`}
                 />
             </div>
         </Modal>

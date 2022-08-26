@@ -10,6 +10,15 @@ const getUserData = async (user: { username: string, password: string }): Promis
     return response.data;
 }
 
+const registerUser = async (user: { username: string, password: string}): Promise<User> => {
+    const response = await axios.post<User>(userBaseUrl, user);
+    if(response.status >= 400) {
+        console.log(response.data)
+        return response.data;
+    }
+    return await getUserData(user);
+}
+
 const addCartItem = ( newProduct: any ) => {
     return async (dispatch: Function, getState: Function) => {
         const response = await axios.patch(`${userBaseUrl}/${getState().username}`, { newCartProduct: newProduct },
@@ -62,4 +71,4 @@ const deleteCart = (): Function => {
     }
 }
 
-export default { getUserData, addCartItem, changeQuantity, deleteCartItem, deleteCart };
+export default { getUserData, registerUser, addCartItem, changeQuantity, deleteCartItem, deleteCart };

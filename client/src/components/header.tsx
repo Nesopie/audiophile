@@ -14,7 +14,7 @@ const Header = ({ category }: { category: string | undefined }) => {
     let { quantity }: { quantity: number } = useSelector((state: RootState) => {
         return state.cart?.reduce((previous, next) => {
             return { quantity: previous.quantity + next.quantity };
-        }, { quantity: 0}) || {quantity: 0};
+        }, { quantity: 0}) || { quantity: 0 };
     });
 
     return (

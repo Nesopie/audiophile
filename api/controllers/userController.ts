@@ -15,7 +15,10 @@ export const getAllUsers = async (_request: express.Request, response: express.R
 export const getUser = async (request: express.Request, response: express.Response) => {
     const user = await User.findOne({ username: request.params.username })
                            .populate('cart.product', { image: { mobile: 1 }, price: 1, name: 1 });
-    response.json(user);
+    if(user)
+        response.json(user);
+    else 
+        response.status(403).json({ error: 'invalid username'});
 }
 
 export const postNewUser = async (request: express.Request, response: express.Response) => {
@@ -26,14 +29,21 @@ export const postNewUser = async (request: express.Request, response: express.Re
 
     const user = new User({
         username: body.username,
-        name: body.name,
+        name: body.username,
         passwordHash,
         cart: []
     });
 
-    const savedUser = await user.save();
-
-    response.json(savedUser);
+    try {
+        const savedUser = await user.save();
+        response.json(savedUser);
+    }catch(err: unknown) {
+        if(err instanceof Error) {
+            if(err.constructor.name === "ValidationError") {
+                response.status(409).json({ error: "Username already exists"});
+            }
+        }
+    }
 }
 
 export const tokenValidator = async (request: express.Request, response: express.Response, next: express.NextFunction) => {
@@ -44,10 +54,8 @@ export const tokenValidator = async (request: express.Request, response: express
             return response.status(401).json({ error: 'invalid or missing token' });
         }
     }catch(err: unknown) {
-        if(err instanceof Error) {
-            if(err instanceof TokenExpiredError) {
-                return response.status(401).json({ error: 'token expired' });
-            }
+        if(err instanceof Error && err instanceof TokenExpiredError) {
+            return response.status(401).json({ error: 'token expired' });
         }
     }
     return next();

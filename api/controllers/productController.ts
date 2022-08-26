@@ -150,6 +150,5 @@ exports.handleDownvote = async (req: express.Request, res: express.Response) => 
         product.save().then((savedProduct: Products) => {
             res.json(savedProduct.reviews);
         });
-
     }
 }

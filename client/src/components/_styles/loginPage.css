@@ -1,0 +1,96 @@
+@import url('../../utils/base.css');
+
+.login-container {
+    height: 100vh;
+    color: white;
+    display: flex;
+}
+
+.form-container {
+    position: relative;
+    float: right;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.login-form > div {
+    min-width: 400px;
+}
+    
+.login-form > div {
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.login-form > div:first-child {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.login-form .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+    
+.login-form .button-container > * {
+    flex: 1;
+}
+
+.login-form input {
+    caret-color: white;
+    color: white;
+}
+
+.error {
+    display: inline-block !important;
+    background-color: #FCE0D8;
+    border: 1px solid #F6A08A;
+    color: #F0603B;
+    padding: 1rem;
+}
+
+.error::first-letter {
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 824px) {
+    .login-container > div {
+        background-image: url("../assets/home/tablet/image-header.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .login-container > * {
+        flex: 1;
+    }
+
+    .login-form > div {
+        min-width: 300px;
+    }
+    
+    .login-form > div:first-child {
+        font-size: 1.6rem;
+        text-align: left;
+    }
+    
+    .login-form .input-div:focus-within {
+        border: 1px solid var(--dark-orange);
+    }
+}

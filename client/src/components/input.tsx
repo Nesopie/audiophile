@@ -1,6 +1,7 @@
 import React  from 'react';
 import { UseFormRegister, Path, FieldError } from 'react-hook-form';
 import { IFormValues } from './forms';
+
 import './_styles/input.css';
 
 interface IInputProps {
@@ -36,7 +37,12 @@ const Input = ({ label, placeholder, type, register, required, error, other }: I
                 {error && <span>{errorMessageMapper[error.type as myErrors]()}</span>}
             </div>
             <div className='input-div'>
-                <input id={`${label}`} type={`${type}`} placeholder={placeholder}  {...register(label, { required, ...other })}/>
+                <input 
+                    id={`${label}`} 
+                    type={`${type}`} 
+                    placeholder={placeholder} 
+                    {...register(label, { required, ...other })}
+                />
             </div>
         </div>
     );

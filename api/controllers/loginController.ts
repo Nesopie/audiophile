@@ -1,10 +1,9 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const express = require('express');
-const router = express.Router();
+import express = require('express');
 const { User } = require('../models/user');
 
-exports.login = async(request: any, response: any) => {
+exports.login = async(request: express.Request, response: express.Response) => {
     const body = request.body;
     const user = await User.findOne({ username: body.username })
                             .populate('cart.product', { image: { mobile: 1}, name: 1, price: 1 });
@@ -12,8 +11,6 @@ exports.login = async(request: any, response: any) => {
     const passwordCorrect = user === null 
         ? false
         : await bcrypt.compare(body.password, user.passwordHash);
-
-    console.log(user);
 
     if(!user || !passwordCorrect) {
         response.status(401).json({ error: 'invalid username or password' });

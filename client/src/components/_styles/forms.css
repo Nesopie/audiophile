@@ -1,9 +1,5 @@
 @import url('../../utils/base.css');
 
-/* #root > div {
-    background-color: var(--light-grey);
-}  */
-
 .checkout {
     width: 90vw;
     margin: 2rem auto;
@@ -46,4 +42,26 @@
         display: flex;
         flex-direction: column;
     }
+
+    .form-section.e-money {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .form-section.e-money > * {
+        flex: 1;
+    }
+}
+
+@media screen and (min-width: 824px) {
+    .shipping-info {
+        grid-template-areas: "address address"
+                             "zip-code city"
+                             "country country";
+    }
+
+    #checkout > section.section-shipping-info.form-section > section > div:nth-child(1) {
+        grid-area: address;
+    }
+    
 }

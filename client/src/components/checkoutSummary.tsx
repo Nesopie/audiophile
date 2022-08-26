@@ -20,7 +20,7 @@ const CheckoutSummary = ({ children }: { children: React.ReactNode}): JSX.Elemen
                 <h2>CART({quantity})</h2>
                 <button>Remove all</button>
             </div>
-            {cartProducts?.map((cartProduct: CartItem, index: number) => {
+            {cartProducts?.map((cartProduct: CartItem, _index: number) => {
                 return (
                     <div className='checkout-products' key={uniqid()}>
                         <div>

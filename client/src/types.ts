@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import { Key } from 'react';
 
 export interface Images {

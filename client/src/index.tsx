@@ -8,7 +8,8 @@ import App from './App';
 import ProductPage from './components/productPage';
 import ProductsPage from './components/productsPage';
 import Checkout from './components/checkout';
-import LoginForm from './components/loginform';
+// import LoginForm from './components/loginform';
+import LoginPage from './components/loginPage';
 import './index.css';
 
 import { User } from './types';
@@ -67,7 +68,7 @@ ReactDOM.render(
                     />
                     <Route 
                         path="/login"
-                        element={<LoginForm />}
+                        element={<LoginPage />}
                     />
                 </Routes>
             </BrowserRouter>

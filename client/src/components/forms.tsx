@@ -6,6 +6,7 @@ import './_styles/forms.css';
 import CashOnDelivery from './cashOnDelivery';
 import { useState } from 'react';
 import PaymentCompleted from './paymentCompleted';
+import userService from '../services/users'
 
 export interface IFormValues {
     'Name': string;
@@ -17,16 +18,25 @@ export interface IFormValues {
     'Country': string;
     'e-Money Number': string;
     'e-Money PIN': string;
-    'username': string;
-    'password': string;
+    'Username': string;
+    'Password': string;
 }
 
 const Forms = ():JSX.Element => {
     const { register, handleSubmit, formState: { errors } } = useForm<IFormValues>();
     const [ show, setShow ] = useState<boolean>(false);
+    const [ showCash, setShowCash ] = useState<boolean>(false);
 
     const onSubmit: SubmitHandler<IFormValues> = (data) => {
-        setShow(true);
+        const form: HTMLFormElement | null = document.querySelector('#checkout');
+        try {
+            userService.deleteCart();
+            setShow(true);
+            form?.reset();
+        }catch(err: unknown) {
+            if(err instanceof Error) 
+                console.log(err);
+        }
     }
 
     return (
@@ -38,7 +48,7 @@ const Forms = ():JSX.Element => {
             >
                 <Input 
                     label='Name'
-                    placeholder='Ayman'
+                    placeholder='Name'
                     type="text"
                     register={register}
                     required={true}
@@ -46,7 +56,7 @@ const Forms = ():JSX.Element => {
                 />
                 <Input 
                     label='Email Address'
-                    placeholder='ayman@gmail.com'
+                    placeholder='name@example.com'
                     type="email"
                     register={register}
                     required={true}
@@ -78,7 +88,7 @@ const Forms = ():JSX.Element => {
             >
                 <Input 
                     label='Your Address'
-                    placeholder='India'
+                    placeholder='Address'
                     type="text"
                     register={register}
                     error={errors["Your Address"]}
@@ -137,9 +147,11 @@ const Forms = ():JSX.Element => {
                 <div>
                     <RadioInput 
                         label='e-Money'
+                        setShowCash={setShowCash}
                     />
                     <RadioInput 
                         label='Cash on Delivery'
+                        setShowCash={setShowCash}
                     />
                 </div>
             </Form>
@@ -157,7 +169,24 @@ const Forms = ():JSX.Element => {
                     register={register}
                 />
             </div>
-            <CashOnDelivery />
+            { showCash ? 
+                <CashOnDelivery/> :
+                <div className='form-section e-money'>
+                    <Input 
+                        label='e-Money Number'
+                        placeholder='1234567890'
+                        type='text'
+                        register={register}
+                    />
+                    <Input 
+                        label='e-Money PIN'
+                        placeholder='1234'
+                        type='text'
+                        register={register}
+                    />
+            </div>
+            }
+
             <PaymentCompleted 
                 show={show}
                 onClose={() => setShow(false)}
