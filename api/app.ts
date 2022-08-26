@@ -2,6 +2,7 @@ import express = require('express');
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import path from 'path';
 
 require('dotenv').config()
 const app = express();
@@ -9,9 +10,6 @@ app.use(bodyParser.json());
 const url = process.env.MONGODB_URI as string;
 
 app.use(cors());
-const productRouter = require('./routes/productRouter');
-const userRouter = require('./routes/userRouter');
-const loginRouter = require('./routes/loginRouter');
 
 mongoose.connect(url)
     .then((_result: any) => {
@@ -23,9 +21,10 @@ mongoose.connect(url)
     });
 
 app.use(express.static('build'));
-app.use('/api/products', productRouter);
-app.use('/api/users', userRouter);
-app.use('/api/login', loginRouter);
+
+app.use('/api/products', require(path.join(__dirname, 'routes', 'productRouter')));
+app.use('/api/users', require(path.join(__dirname, 'routes', 'userRouter')));
+app.use('/api/login', require(path.join(__dirname, 'routes', 'loginRouter')));
 
 const PORT = process.env.PORT || 3000;
 

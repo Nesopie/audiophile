@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.6601754e.css",
-    "main.js": "/static/js/main.beab0ca8.js",
+    "main.css": "/static/css/main.9fcb72f8.css",
+    "main.js": "/static/js/main.adc64f32.js",
     "static/media/image-speaker-zx9.png": "/static/media/image-speaker-zx9.97769f2fb291eaed1868.png",
     "static/media/image-best-gear.jpg": "/static/media/image-best-gear.4d4a28e9e7c9ab158dd8.jpg",
     "static/media/image-gallery-3.jpg": "/static/media/image-gallery-3.402d4e805943fb31ef40.jpg",
     "static/media/image-product.jpg": "/static/media/image-product.4dc7e99c2ff099acdcef.jpg",
-    "static/media/image-category-page-preview.jpg": "/static/media/image-category-page-preview.74e2f27bf0076604f473.jpg",
+    "static/media/image-category-page-preview.jpg": "/static/media/image-category-page-preview.1e710ed30a8f1d2b6316.jpg",
     "static/media/image-header.jpg": "/static/media/image-header.d200a3583e72c7981f46.jpg",
     "static/media/image-category-page-preview.png": "/static/media/image-category-page-preview.6e8830d475e04b7b9627.png",
     "static/media/image-category-thumbnail-headphones.png": "/static/media/image-category-thumbnail-headphones.fbd401d9c735a217286f.png",
@@ -24,15 +24,16 @@
     "static/media/icon-cart.svg": "/static/media/icon-cart.5e1893a62995fc7b443abe7bee68063e.svg",
     "index.html": "/index.html",
     "static/media/icon-twitter.svg": "/static/media/icon-twitter.5dc7711ff2433b3b89ee7742a407e3bd.svg",
+    "static/media/cash.svg": "/static/media/cash.87ac0059b74054ac60cf52dcfe6e6820.svg",
     "static/media/icon-facebook.svg": "/static/media/icon-facebook.e9773e52bc64ea377cb95af7ccb6877e.svg",
     "static/media/pattern-circles.svg": "/static/media/pattern-circles.f4df3610b83b818abbbe.svg",
     "static/media/icon-arrow-right.svg": "/static/media/icon-arrow-right.357b9db81a798d76397efa2f4ad3409f.svg",
-    "static/media/icon-hamburger.svg": "/static/media/icon-hamburger.f8a9f0cf12d419a7d18556f98d81a47e.svg",
-    "main.6601754e.css.map": "/static/css/main.6601754e.css.map",
-    "main.beab0ca8.js.map": "/static/js/main.beab0ca8.js.map"
+    "static/media/icon-hamburger.svg": "/static/media/icon-hamburger.f8a9f0cf12d419a7d185.svg",
+    "main.9fcb72f8.css.map": "/static/css/main.9fcb72f8.css.map",
+    "main.adc64f32.js.map": "/static/js/main.adc64f32.js.map"
   },
   "entrypoints": [
-    "static/css/main.6601754e.css",
-    "static/js/main.beab0ca8.js"
+    "static/css/main.9fcb72f8.css",
+    "static/js/main.adc64f32.js"
   ]
 }

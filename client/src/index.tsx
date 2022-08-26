@@ -50,7 +50,7 @@ export const store = createStore(userReducer, applyMiddleware(thunk));
 ReactDOM.render(
     <Provider store={store}>
         <helper.OnLoadWrapper>
-            <BrowserRouter>
+            <BrowserRouter basename='/'>
                 <Routes>
                     <Route 
                         path="/" 
