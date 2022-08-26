@@ -4,11 +4,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 
-require('dotenv').config()
+require('dotenv').config();
 const app = express();
-app.use(bodyParser.json());
 const url = process.env.MONGODB_URI as string;
 
+app.use(bodyParser.json());
 app.use(cors());
 
 mongoose.connect(url)
@@ -31,6 +31,11 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
 
 if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client', 'build')));
+    app.get('/*', (_req, res) => {
+        res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
+    });
+}else {
     app.use(express.static(path.join(__dirname, '../client', 'build')));
     app.get('/*', (_req, res) => {
         res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));

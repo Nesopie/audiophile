@@ -12,6 +12,8 @@ exports.login = async(request: express.Request, response: express.Response) => {
         ? false
         : await bcrypt.compare(body.password, user.passwordHash);
 
+    console.log(body);
+
     if(!user || !passwordCorrect) {
         response.status(401).json({ error: 'invalid username or password' });
         return;

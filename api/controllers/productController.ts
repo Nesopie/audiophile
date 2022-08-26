@@ -4,7 +4,7 @@ const { User } = require('../models/user');
 import express = require('express');
 import { Products, Review } from "../types";
 
-exports.getAllProducts = (_req: any, res: any): void => {
+exports.getAllProducts = (req: any, res: any): void => {
     Product.find({}).exec((err: unknown, results: any) => {
         if(err && err instanceof Error)
             res.send(err.message);
@@ -14,6 +14,7 @@ exports.getAllProducts = (_req: any, res: any): void => {
 }
 
 exports.getByCategory = (req: any, res: any): void => {
+    console.log(req);
     try {
         if(!validateCategory(req.params.category))
             throw new Error("Invalid category!");
@@ -30,6 +31,7 @@ exports.getByCategory = (req: any, res: any): void => {
 }
 
 exports.getBySlug = (req: any, res: any): void => {
+    console.log(req);
     try {
         Product.find({slug: req.params.slug})
         .populate('reviews.upvotedBy').populate('reviews.downvotedBy')
