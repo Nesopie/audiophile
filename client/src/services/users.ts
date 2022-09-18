@@ -3,10 +3,10 @@ import { User } from "../types";
 import helper from "../utils/helper";
 import toast from "react-hot-toast";
 
-const loginBaseUrl = `${window.location.origin}/api/login`;
-const userBaseUrl = `${window.location.origin}/api/users`;
-// const loginBaseUrl = "http://localhost:3001/api/login";
-// const userBaseUrl = "http://localhost:3001/api/users";
+// const loginBaseUrl = `${window.location.origin}/api/login`;
+// const userBaseUrl = `${window.location.origin}/api/users`;
+const loginBaseUrl = "http://localhost:3001/api/login";
+const userBaseUrl = "http://localhost:3001/api/users";
 
 const getUserData = async (user: {
     username: string;

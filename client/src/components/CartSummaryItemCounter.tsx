@@ -13,6 +13,7 @@ const CartSummaryItemCounter = ({
     index: number;
     cartProduct: CartItem;
 }): JSX.Element => {
+    console.log("hi");
     const dispatch = useDispatch();
 
     const increment = () => {

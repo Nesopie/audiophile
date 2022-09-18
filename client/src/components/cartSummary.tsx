@@ -9,7 +9,7 @@ import { CartItem } from "../types";
 import userService from "../services/users";
 
 import "./_styles/cartSummary.css";
-import CartSummaryItem from "./cartItem";
+import CartSummaryItem from "./cartSummaryItem";
 
 const CartSummary = ({
     defaultState,
@@ -61,7 +61,7 @@ const CartSummary = ({
                         <CartSummaryItem
                             cartProduct={cartProduct}
                             index={index}
-                            key={uniqid()}
+                            key={cartProduct.name}
                         />
                     );
                 })}

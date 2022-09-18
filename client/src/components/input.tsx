@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { UseFormRegister, Path, FieldError } from "react-hook-form";
 import { IFormValues } from "./forms";
 
@@ -40,9 +40,7 @@ const Input = ({
         pattern: () => "Wrong format",
     };
 
-    useEffect(() => {
-        console.log(label, error);
-    });
+    console.log("hi");
 
     return (
         <div>
@@ -64,4 +62,8 @@ const Input = ({
     );
 };
 
-export default React.memo(Input);
+export default React.memo(
+    Input,
+    <T extends Readonly<IInputProps>>(prev: T, next: T): boolean =>
+        prev && next && prev.error?.message === next.error?.message
+);

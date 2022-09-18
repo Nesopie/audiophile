@@ -48,10 +48,8 @@ const ProductsPage = (): JSX.Element => {
 
     useEffect(() => {
         setMounted((prev) => {
-            console.log(category);
             const newMounted = { ...prev };
             newMounted[category] = products;
-            console.log(newMounted);
             return newMounted;
         });
     }, [products]);

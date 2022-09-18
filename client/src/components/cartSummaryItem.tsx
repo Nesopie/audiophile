@@ -3,13 +3,15 @@ import helper from "../utils/helper";
 import CartSummaryItemCounter from "./CartSummaryItemCounter";
 import React from "react";
 
+export interface ICartSummaryItemProps {
+    cartProduct: CartItem;
+    index: number;
+}
+
 const cartSummaryItem = ({
     cartProduct,
     index,
-}: {
-    cartProduct: CartItem;
-    index: number;
-}): JSX.Element => {
+}: ICartSummaryItemProps): JSX.Element => {
     console.log("hi");
     return (
         <div className="summary-products">
@@ -28,4 +30,13 @@ const cartSummaryItem = ({
     );
 };
 
-export default React.memo(cartSummaryItem);
+export default React.memo(
+    cartSummaryItem,
+    <T extends Readonly<ICartSummaryItemProps>>(prev: T, next: T) => {
+        return (
+            prev &&
+            next &&
+            prev.cartProduct.quantity === next.cartProduct.quantity
+        );
+    }
+);

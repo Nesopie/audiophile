@@ -2,8 +2,8 @@ import axios, { AxiosResponse } from "axios";
 import { Products, RecommendedProducts } from "../types";
 import helper from "../utils/helper";
 
-// const baseUrl: string = "http://localhost:3001/api/products";
-const baseUrl = `${window.location.origin}/api/products`;
+const baseUrl: string = "http://localhost:3001/api/products";
+// const baseUrl = `${window.location.origin}/api/products`;
 
 const getProductsByCategory = async (category: string | undefined) => {
     const response = await axios.get(`${baseUrl}/${category}`);
