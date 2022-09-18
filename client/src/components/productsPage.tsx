@@ -35,22 +35,26 @@ const ProductsPage = (): JSX.Element => {
             productService
                 .getProductsByCategory(category)
                 .then((result) => {
-                    console.log("hi");
                     setProducts(result);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
-            setMounted((prev) => {
-                const newMounted = { ...prev };
-                newMounted[category] = products;
-                return newMounted;
-            });
         } else {
             setProducts(mounted[category]);
         }
         setLoading(false);
     }, [category]);
+
+    useEffect(() => {
+        setMounted((prev) => {
+            console.log(category);
+            const newMounted = { ...prev };
+            newMounted[category] = products;
+            console.log(newMounted);
+            return newMounted;
+        });
+    }, [products]);
 
     return (
         <div className="product-page-container">
