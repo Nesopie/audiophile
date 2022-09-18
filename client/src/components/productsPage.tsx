@@ -29,6 +29,7 @@ const ProductsPage = (): JSX.Element => {
     const category = useParams().category as Categories;
 
     useEffect(() => {
+        setLoading(true);
         window.scroll(0, 0);
         if (mounted[category].length === 0) {
             productService
@@ -36,7 +37,6 @@ const ProductsPage = (): JSX.Element => {
                 .then((result) => {
                     console.log("hi");
                     setProducts(result);
-                    setLoading(false);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -49,7 +49,9 @@ const ProductsPage = (): JSX.Element => {
         } else {
             setProducts(mounted[category]);
         }
+        setLoading(false);
     }, [category]);
+
     return (
         <div className="product-page-container">
             <Header category={`${category}`} />
