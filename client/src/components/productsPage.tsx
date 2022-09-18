@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Categories, Products } from "../types";
 import { useMediaQuery } from "react-responsive";
+import { Bars } from "react-loading-icons";
 
 import Header from "./header";
 import ProductCard from "./productCard";
@@ -53,7 +54,12 @@ const ProductsPage = (): JSX.Element => {
         <div className="product-page-container">
             <Header category={`${category}`} />
             <section className="product-container">
-                {!loading &&
+                {loading ? (
+                    <Bars
+                        height={"20em"}
+                        fill={"#d87c4a"}
+                    />
+                ) : (
                     products.map((product) => {
                         return (
                             <ProductCard
@@ -73,7 +79,8 @@ const ProductsPage = (): JSX.Element => {
                                 slug={product.slug}
                             />
                         );
-                    })}
+                    })
+                )}
             </section>
             <ProductCategory />
             <BestGear />

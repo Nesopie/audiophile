@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Products } from "../types";
+import { Bars } from "react-loading-icons";
 
 import Header from "./header";
 import ProductOptions from "./productOptions";
 import ProductOverview from "./productOverview";
-import Recommendations from "./Recommendations";
 import ProductCategory from "./productCategory";
 import BestGear from "./bestGear";
 import Footer from "./footer";
@@ -13,6 +13,8 @@ import "./_styles/productsPage.css";
 
 import productService from "../services/products";
 import ProductReviews from "./productReviews";
+
+const Recommendations = React.lazy(() => import("./Recommendations"));
 
 const ProductPage = (): JSX.Element => {
     const [product, setProduct] = useState<Products | undefined>(undefined);
@@ -50,7 +52,16 @@ const ProductPage = (): JSX.Element => {
                 )
             ) : null}
             {product !== undefined && (
-                <Recommendations recommendedProducts={product.others} />
+                <React.Suspense
+                    fallback={
+                        <Bars
+                            height={"5em"}
+                            fill={"#d87c4a"}
+                        />
+                    }
+                >
+                    <Recommendations recommendedProducts={product.others} />
+                </React.Suspense>
             )}
             <ProductCategory />
             <BestGear />
