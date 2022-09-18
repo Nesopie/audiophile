@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .checkout {
     width: 90vw;
@@ -10,7 +10,7 @@
     flex-direction: column;
 }
 
-.payment-details > div:last-child{
+.payment-details > div:last-child {
     display: flex;
     flex-direction: column;
 }
@@ -47,7 +47,7 @@
         display: flex;
         flex-direction: row;
     }
-    
+
     .form-section.e-money > * {
         flex: 1;
     }
@@ -55,13 +55,16 @@
 
 @media screen and (min-width: 824px) {
     .shipping-info {
-        grid-template-areas: "address address"
-                             "zip-code city"
-                             "country country";
+        grid-template-areas:
+            "address address"
+            "zip-code city"
+            "country country";
     }
 
-    #checkout > section.section-shipping-info.form-section > section > div:nth-child(1) {
+    #checkout
+        > section.section-shipping-info.form-section
+        > section
+        > div:nth-child(1) {
         grid-area: address;
     }
-    
 }

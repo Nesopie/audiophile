@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .cart-summary {
     position: absolute;
@@ -26,10 +26,10 @@
 }
 
 .cart-summary > div:first-child button {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     color: var(--dark-grey);
     text-align: right;
-    border: 0;  
+    border: 0;
     letter-spacing: 1px;
     font-size: 1rem;
 }

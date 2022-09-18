@@ -1,14 +1,20 @@
-import './_styles/itemCounter.css';
+import "./_styles/itemCounter.css";
 
-const ItemCounter = ({ quantity, setQuantity} : { quantity: number, setQuantity: any }): JSX.Element => {
+const ItemCounter = ({
+    quantity,
+    setQuantity,
+}: {
+    quantity: number;
+    setQuantity: any;
+}): JSX.Element => {
     const increment = () => {
         setQuantity(quantity + 1);
-    }
+    };
 
     const decrement = () => {
-        if(quantity == 1) return;
+        if (quantity == 1) return;
         setQuantity(quantity - 1);
-    }
+    };
 
     return (
         <div className="item-counter">
@@ -17,6 +23,6 @@ const ItemCounter = ({ quantity, setQuantity} : { quantity: number, setQuantity:
             <button onClick={increment}>+</button>
         </div>
     );
-}
+};
 
 export default ItemCounter;

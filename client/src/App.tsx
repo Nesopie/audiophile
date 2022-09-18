@@ -1,10 +1,7 @@
-import React from 'react';
-import Homepage from './components/homepage';
+import Homepage from "./components/homepage";
 
 function App(): JSX.Element {
-    return(
-        <Homepage />
-    );
+    return <Homepage />;
 }
 
 export default App;

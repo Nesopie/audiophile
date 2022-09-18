@@ -1,6 +1,7 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
-.input-div, .radio-input-div {
+.input-div,
+.radio-input-div {
     width: 100%;
     height: 3.6rem;
     border: 1px solid var(--dark-grey);
@@ -19,7 +20,7 @@
     justify-content: space-between;
 }
 
-.input-meta span{
+.input-meta span {
     color: #e50914;
 }
 
@@ -42,18 +43,18 @@ input {
     padding: 1rem;
     outline: none;
     border: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
-input[type='radio'] {
+input[type="radio"] {
     display: inline;
     position: relative;
     height: 15px;
     width: 15px;
 }
 
-input[type='radio']:checked:before {
-    content: '';
+input[type="radio"]:checked:before {
+    content: "";
     width: 11px;
     height: 11px;
     position: absolute;

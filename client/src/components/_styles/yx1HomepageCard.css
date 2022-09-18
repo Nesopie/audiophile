@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .yx1 img {
     height: 100%;
@@ -11,7 +11,7 @@
     border-radius: 25px;
 }
 
-.yx1-card img{
+.yx1-card img {
     max-width: 90vw;
     z-index: 2;
     border-radius: 25px;
@@ -24,7 +24,7 @@
     flex-direction: column;
     gap: 2rem;
     bottom: 50%;
-    transform: translateY(50%);   
+    transform: translateY(50%);
     margin-left: 2rem;
 }
 

@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .form-section {
     background: white;
@@ -31,7 +31,7 @@
     font-weight: 600;
 }
 
-.payment-details div{
+.payment-details div {
     display: flex;
     flex-direction: row;
 }

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 export interface Images {
     mobile: "string";
@@ -36,10 +36,10 @@ export interface Products {
     price: number;
     description: string;
     features: string;
-    includes: Array<Includes>
+    includes: Array<Includes>;
     gallery: Gallery;
-    others: Array<RecommendedProducts>,
-    reviews: Array<Review>
+    others: Array<RecommendedProducts>;
+    reviews: Array<Review>;
 }
 
 export interface CartItem {
@@ -56,9 +56,9 @@ export interface IUser {
 
 export interface Review {
     id: mongoose.Schema.Types.ObjectId;
-    username: string,
-    date: Date,
-    content: string,
+    username: string;
+    date: Date;
+    content: string;
     upvotedBy: Array<mongoose.Schema.Types.ObjectId>;
     downvotedBy: Array<mongoose.Schema.Types.ObjectId>;
 }

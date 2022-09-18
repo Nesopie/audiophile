@@ -1,11 +1,11 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .product-overview img {
     max-width: 90vw;
     border-radius: 10px;
 }
 
-.product-overview > div > div { 
+.product-overview > div > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,7 +74,6 @@
 .product-overview ul li > div:first-child {
     color: var(--dark-orange);
 }
-
 
 .product-overview ul li > div:last-child {
     color: var(--dark-grey);
@@ -161,7 +160,7 @@
 @media screen and (min-width: 824px) {
     .product-overview > div > div > div:first-child {
         grid-template-columns: 1fr 1fr;
-        grid-gap: 5rem;   
+        grid-gap: 5rem;
     }
 
     .product-overview > div > div > div:nth-child(2) {

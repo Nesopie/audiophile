@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .product-card {
     display: flex;
@@ -47,7 +47,7 @@
     .product-category {
         display: grid !important;
         width: 80vw;
-        grid-template-columns: repeat(3,1fr) !important;
+        grid-template-columns: repeat(3, 1fr) !important;
         grid-gap: 5vw;
     }
 

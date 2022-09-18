@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .payment-completed-modal {
     outline: none;
@@ -83,7 +83,6 @@
     color: white;
 }
 
-
 @media screen and (min-width: 554px) {
     .payment-completed {
         width: 80vw;
@@ -104,7 +103,8 @@
         border-radius: 5px 0 0 5px;
     }
 
-    .payment-completed-products > div > div > div > div, .payment-completed-products > div > div:last-child {
+    .payment-completed-products > div > div > div > div,
+    .payment-completed-products > div > div:last-child {
         white-space: nowrap;
     }
 

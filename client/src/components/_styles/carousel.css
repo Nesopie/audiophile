@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .carousel {
     position: relative;
@@ -12,12 +12,12 @@
     justify-content: center;
     min-height: 90vh;
     max-height: 800px;
-    background: url('.././assets/home/mobile/image-header.jpg') fixed;
+    background: url(".././assets/home/mobile/image-header.jpg") fixed;
     background-size: cover;
     background-position: center center;
 }
 
-.carousel div img{
+.carousel div img {
     min-width: 90vw;
     max-width: 480px;
     z-index: 1;
@@ -57,7 +57,7 @@
 
 @media only screen and (min-width: 500px) {
     .carousel > div {
-        background: url('.././assets/home/tablet/image-header.jpg') fixed;
+        background: url(".././assets/home/tablet/image-header.jpg") fixed;
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -80,7 +80,7 @@
 
 @media only screen and (min-width: 824px) {
     .carousel > div {
-        background: url('.././assets/home/desktop/image-hero.jpg') fixed;
+        background: url(".././assets/home/desktop/image-hero.jpg") fixed;
         background-position: center;
     }
 

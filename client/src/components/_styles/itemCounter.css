@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .item-counter {
     background-color: var(--light-grey);
@@ -6,7 +6,7 @@
 }
 
 .item-counter div {
-    font-size: .9rem;
+    font-size: 0.9rem;
     margin: 0 1rem;
     width: 30px;
     display: flex;
@@ -17,7 +17,7 @@
 .item-counter button {
     border: 0;
     outline: 0;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     color: var(--dark-grey);
 }
 

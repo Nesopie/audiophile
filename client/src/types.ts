@@ -1,4 +1,4 @@
-import { Key } from 'react';
+import { Key } from "react";
 
 export interface Images {
     mobile: "string";
@@ -36,10 +36,10 @@ export interface Products {
     price: number;
     description: string;
     features: string;
-    includes: Array<Includes>
+    includes: Array<Includes>;
     gallery: Gallery;
     others: Array<RecommendedProducts>;
-    reviews: Array<Review>
+    reviews: Array<Review>;
 }
 
 export interface CartItem {
@@ -57,10 +57,16 @@ export interface User {
 
 export interface Review {
     _id: string;
-    username: string,
-    date: Date,
-    content: string,
-    upvotes: number,
-    upvotedBy: Array<User>
-    downvotedBy: Array<User>
+    username: string;
+    date: Date;
+    content: string;
+    upvotes: number;
+    upvotedBy: Array<User>;
+    downvotedBy: Array<User>;
+}
+
+export enum Categories {
+    Headphones = "headphones",
+    Earphones = "earphones",
+    Speakers = "speakers",
 }

@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .checkout-summary {
     display: flex;
@@ -17,9 +17,9 @@
 }
 
 .checkout-summary > div:first-child button {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     color: var(--dark-grey);
-    text-align: right;   
+    text-align: right;
     border: 0;
     letter-spacing: 1px;
     font-size: 1rem;

@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .login-container {
     height: 100vh;
@@ -30,7 +30,7 @@
 .login-form > div {
     min-width: 400px;
 }
-    
+
 .login-form > div {
     min-width: 400px;
     display: flex;
@@ -48,7 +48,7 @@
     flex-direction: row;
     gap: 5px;
 }
-    
+
 .login-form .button-container > * {
     flex: 1;
 }
@@ -60,9 +60,9 @@
 
 .error {
     display: inline-block !important;
-    background-color: #FCE0D8;
-    border: 1px solid #F6A08A;
-    color: #F0603B;
+    background-color: #fce0d8;
+    border: 1px solid #f6a08a;
+    color: #f0603b;
     padding: 1rem;
 }
 
@@ -76,7 +76,7 @@
         background-position: center;
         background-size: cover;
     }
-    
+
     .login-container > * {
         flex: 1;
     }
@@ -84,12 +84,12 @@
     .login-form > div {
         min-width: 300px;
     }
-    
+
     .login-form > div:first-child {
         font-size: 1.6rem;
         text-align: left;
     }
-    
+
     .login-form .input-div:focus-within {
         border: 1px solid var(--dark-orange);
     }

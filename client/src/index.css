@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap");
 
 * {
     margin: 0;
@@ -13,8 +13,8 @@ body {
 }
 
 .blur {
-    background-color: rgba(0,0,0,0.6);
-    color: (0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: (0, 0, 0, 0.3);
 }
 
 img {

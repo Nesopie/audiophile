@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .zx9-card {
     position: relative;
@@ -14,7 +14,17 @@
 
 .zx9-card img {
     padding-top: 3rem;
-    background-image: radial-gradient(circle at center center, var(--dark-orange) 0%, var(--dark-orange) 55%, white 55.2%, var(--dark-orange) 55.5%, var(--dark-orange) 70%, white 70.2%, var(--dark-orange) 70.5%, var(--dark-orange) 100%);
+    background-image: radial-gradient(
+        circle at center center,
+        var(--dark-orange) 0%,
+        var(--dark-orange) 55%,
+        white 55.2%,
+        var(--dark-orange) 55.5%,
+        var(--dark-orange) 70%,
+        white 70.2%,
+        var(--dark-orange) 70.5%,
+        var(--dark-orange) 100%
+    );
 }
 
 .zx9-card-description {
@@ -42,7 +52,7 @@
     .zx9-card-description {
         padding: 0 5rem;
     }
-    
+
     .zx9-card-description h1 {
         font-size: 4rem;
     }
@@ -62,7 +72,17 @@
     }
 
     .zx9-card > div:first-child {
-        background-image: radial-gradient(circle at center center, var(--dark-orange) 0%, var(--dark-orange) 60%, white 60.2%, var(--dark-orange) 60.5%, var(--dark-orange) 70%, white 70.2%, var(--dark-orange) 70.5%, var(--dark-orange) 100%);
+        background-image: radial-gradient(
+            circle at center center,
+            var(--dark-orange) 0%,
+            var(--dark-orange) 60%,
+            white 60.2%,
+            var(--dark-orange) 60.5%,
+            var(--dark-orange) 70%,
+            white 70.2%,
+            var(--dark-orange) 70.5%,
+            var(--dark-orange) 100%
+        );
     }
 
     .zx9-card img {

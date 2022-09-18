@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 footer {
     position: relative;
@@ -30,7 +30,7 @@ footer > div:first-child {
     flex-direction: column;
 }
 
-.links-container a{
+.links-container a {
     display: block;
     font-size: 1rem;
     text-decoration: none;
@@ -74,7 +74,8 @@ footer > div:first-child {
 
 .socials img:hover {
     cursor: pointer;
-    filter: invert(46%) sepia(58%) saturate(507%) hue-rotate(337deg) brightness(108%) contrast(88%);
+    filter: invert(46%) sepia(58%) saturate(507%) hue-rotate(337deg)
+        brightness(108%) contrast(88%);
 }
 
 @media screen and (min-width: 480px) {
@@ -94,9 +95,9 @@ footer > div:first-child {
 
     footer .links-container {
         display: grid;
-        grid-template-columns: repeat(2,100%);
+        grid-template-columns: repeat(2, 100%);
     }
-    
+
     footer .links-container a {
         font-size: 1.2rem;
     }

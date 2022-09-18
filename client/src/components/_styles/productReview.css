@@ -1,4 +1,4 @@
-@import url('../../utils/base.css');
+@import url("../../utils/base.css");
 
 .review {
     display: flex;
@@ -62,7 +62,7 @@
 
 .review-header > div:first-child span:first-child {
     font-weight: 700;
-    color: var(--dark-orange)
+    color: var(--dark-orange);
 }
 
 .review-header > div:first-child span:last-child {

@@ -1,47 +1,52 @@
-import ReactDOM from 'react-dom';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import ReactDOM from "react-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import toast from "react-hot-toast";
 
-import App from './App';
-import ProductPage from './components/productPage';
-import ProductsPage from './components/productsPage';
-import Checkout from './components/checkout';
-import LoginPage from './components/loginPage';
-import './index.css';
+import App from "./App";
+import ProductPage from "./components/productPage";
+import ProductsPage from "./components/productsPage";
+import Checkout from "./components/checkout";
+import LoginPage from "./components/loginPage";
+import "./index.css";
 
-import { User } from './types';
-import helper from './utils/helper';
+import { User } from "./types";
+import helper from "./utils/helper";
 
-const userReducer = (state: User = { username: "", cart: [], token: null }, action: any): User => {
+const userReducer = (
+    state: User = { username: "", cart: [], token: null },
+    action: any
+): User => {
     let newState: User = { username: "", cart: [], token: null };
-    switch(action.type) {
-        case('SET_USER') :
+    switch (action.type) {
+        case "SET_USER":
             newState.username = action.username;
             newState.cart = helper.sanitizeCart(action.cart);
             newState.token = action.token;
-            localStorage.setItem('user', JSON.stringify(newState));
-            return {...newState}
-        case('SET_CART'):
+            localStorage.setItem("user", JSON.stringify(newState));
+            return { ...newState };
+        case "SET_CART":
             newState = { ...state };
-            if(state.username === "" || !state.username) return state;
+            if (state.username === "" || !state.username) return state;
             newState.cart = action.cart;
-            localStorage.setItem('user', JSON.stringify(newState));
-            return {...newState};
-        case('SET_USER_LS') :
+            localStorage.setItem("user", JSON.stringify(newState));
+            return { ...newState };
+        case "SET_USER_LS":
             newState = action.user;
             return { ...newState };
-        case('GET_STATE') :
+        case "GET_STATE":
             return state;
-        case('RESET_USER'):
+        case "RESET_USER":
+            toast.error("Your session has expired, please login again");
             const resetUser = { username: "", cart: [], token: null };
-            localStorage.setItem('user', JSON.stringify(resetUser));
+            localStorage.setItem("user", JSON.stringify(resetUser));
             return resetUser;
-        default: 
+        default:
             return state;
     }
-}
+};
 
 export type RootState = ReturnType<typeof userReducer>;
 
@@ -50,31 +55,31 @@ export const store = createStore(userReducer, applyMiddleware(thunk));
 ReactDOM.render(
     <Provider store={store}>
         <helper.OnLoadWrapper>
-            <BrowserRouter basename='/'>
+            <BrowserRouter basename="/">
                 <Routes>
-                    <Route 
-                        path="/" 
-                        element={<App />} 
+                    <Route
+                        path="/"
+                        element={<App />}
                     />
-                    <Route 
+                    <Route
                         path="/products/:category"
-                        element={<ProductsPage/>} 
+                        element={<ProductsPage />}
                     />
                     <Route
                         path="/products/:category/:slug"
                         element={<ProductPage />}
                     />
-                    <Route 
+                    <Route
                         path="/checkout"
                         element={<Checkout />}
                     />
-                    <Route 
+                    <Route
                         path="/login"
                         element={<LoginPage />}
                     />
                 </Routes>
             </BrowserRouter>
         </helper.OnLoadWrapper>
-  </Provider>,
-  document.getElementById('root')
+    </Provider>,
+    document.getElementById("root")
 );
