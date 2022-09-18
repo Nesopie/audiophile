@@ -13,6 +13,7 @@ import "./_styles/productsPage.css";
 
 import productService from "../services/products";
 import ProductReviews from "./productReviews";
+import { Skeleton } from "@mui/material";
 
 const Recommendations = React.lazy(() => import("./Recommendations"));
 
@@ -50,7 +51,9 @@ const ProductPage = (): JSX.Element => {
                 ) : (
                     <ProductReviews productReviews={product.reviews} />
                 )
-            ) : null}
+            ) : (
+                <ProductOverviewSkeleton />
+            )}
             {product !== undefined && (
                 <React.Suspense
                     fallback={
@@ -66,6 +69,31 @@ const ProductPage = (): JSX.Element => {
             <ProductCategory />
             <BestGear />
             <Footer />
+        </div>
+    );
+};
+
+const ProductOverviewSkeleton = () => {
+    return (
+        <div className="product-overview-skeleton">
+            <div>
+                <Skeleton className="product-overview-skeleton-image override" />
+            </div>
+
+            <div className="product-overview-skeleton-description">
+                <h1>
+                    <Skeleton
+                        className="override"
+                        height={"100%"}
+                    />
+                </h1>
+                {new Array(6).fill("x").map((_) => (
+                    <span>
+                        {" "}
+                        <Skeleton className="override" />
+                    </span>
+                ))}
+            </div>
         </div>
     );
 };

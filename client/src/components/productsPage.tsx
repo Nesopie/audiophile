@@ -36,6 +36,7 @@ const ProductsPage = (): JSX.Element => {
                 .getProductsByCategory(category)
                 .then((result) => {
                     setProducts(result);
+                    setLoading(false);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -43,7 +44,6 @@ const ProductsPage = (): JSX.Element => {
         } else {
             setProducts(mounted[category]);
         }
-        setLoading(false);
     }, [category]);
 
     useEffect(() => {
@@ -53,6 +53,15 @@ const ProductsPage = (): JSX.Element => {
             return newMounted;
         });
     }, [products]);
+
+    function quickLogger<T extends {}>(obj: T) {
+        console.log(obj);
+        return false;
+    }
+
+    useEffect(() => {
+        console.log(loading);
+    }, [loading]);
 
     return (
         <div className="product-page-container">
