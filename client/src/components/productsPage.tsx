@@ -43,6 +43,7 @@ const ProductsPage = (): JSX.Element => {
                 });
         } else {
             setProducts(mounted[category]);
+            setLoading(false);
         }
     }, [category]);
 
