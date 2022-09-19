@@ -1,9 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "@mui/material/Modal";
-import uniqid from "uniqid";
 
-import { RootState } from "../index";
+import { RootState } from "../reducers/types";
 import Button from "./button";
 import { CartItem } from "../types";
 import userService from "../services/users";

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import uniqid from "uniqid";
 import React from "react";
 
-import { RootState } from "../index";
+import { RootState } from "../reducers/types";
 import { CartItem } from "../types";
 import helper from "../utils/helper";
 

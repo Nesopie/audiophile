@@ -30,45 +30,47 @@ const ProductPage = (): JSX.Element => {
     }, [window.location.pathname]);
 
     return (
-        <div className="product-page-container">
-            <Header category="plain" />
-            <ProductOptions
-                showOverview={showOverview}
-                setShowOverview={setShowOverview}
-            />
-            {product !== undefined ? (
-                showOverview ? (
-                    <ProductOverview
-                        imagePaths={product.image}
-                        newProduct={product.new}
-                        name={product.name}
-                        description={product.description}
-                        price={`${product.price}`}
-                        features={product.features}
-                        includes={product.includes}
-                        gallery={product.gallery}
-                    />
-                ) : (
-                    <ProductReviews productReviews={product.reviews} />
-                )
-            ) : (
-                <ProductOverviewSkeleton />
-            )}
-            {product !== undefined && (
-                <React.Suspense
-                    fallback={
-                        <Bars
-                            height={"5em"}
-                            fill={"#d87c4a"}
+        <div className="page">
+            <div className="product-page-container">
+                <Header category="plain" />
+                <ProductOptions
+                    showOverview={showOverview}
+                    setShowOverview={setShowOverview}
+                />
+                {product !== undefined ? (
+                    showOverview ? (
+                        <ProductOverview
+                            imagePaths={product.image}
+                            newProduct={product.new}
+                            name={product.name}
+                            description={product.description}
+                            price={`${product.price}`}
+                            features={product.features}
+                            includes={product.includes}
+                            gallery={product.gallery}
                         />
-                    }
-                >
-                    <Recommendations recommendedProducts={product.others} />
-                </React.Suspense>
-            )}
-            <ProductCategory />
-            <BestGear />
-            <Footer />
+                    ) : (
+                        <ProductReviews productReviews={product.reviews} />
+                    )
+                ) : (
+                    <ProductOverviewSkeleton />
+                )}
+                {product !== undefined && (
+                    <React.Suspense
+                        fallback={
+                            <Bars
+                                height={"5em"}
+                                fill={"#d87c4a"}
+                            />
+                        }
+                    >
+                        <Recommendations recommendedProducts={product.others} />
+                    </React.Suspense>
+                )}
+                <ProductCategory />
+                <BestGear />
+                <Footer />
+            </div>
         </div>
     );
 };

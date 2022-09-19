@@ -4,6 +4,8 @@ import { Toaster } from "react-hot-toast";
 
 import { store } from "..";
 import { CartItem } from "../types";
+import { Action, ActionType } from "../reducers/types";
+import { Dispatch } from "redux";
 
 const getCategoryFromSlug = (slug: string) => {
     let i;
@@ -46,15 +48,15 @@ const OnLoadWrapper = ({
 }: {
     children: React.ReactNode;
 }): JSX.Element => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<Dispatch<Action>>();
     useEffect(() => {
         if (store.getState()?.username) return;
         const userString = localStorage.getItem("user");
-        if (!userString) return;
+        if (!userString || userString === "") return;
         const user = JSON.parse(userString);
         dispatch({
-            type: "SET_USER_LS",
-            user: {
+            type: ActionType.setUserFromLocalStorage,
+            payload: {
                 username: user.username,
                 token: user.token,
                 cart: user.cart,

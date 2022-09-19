@@ -12,7 +12,7 @@ const ItemCounter = ({
     };
 
     const decrement = () => {
-        if (quantity == 1) return;
+        if (quantity === 1) return;
         setQuantity(quantity - 1);
     };
 

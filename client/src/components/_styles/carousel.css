@@ -10,7 +10,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    min-height: 90vh;
+    height: 90vh;
     max-height: 800px;
     background: url(".././assets/home/mobile/image-header.jpg") fixed;
     background-size: cover;
@@ -18,7 +18,7 @@
 }
 
 .carousel div img {
-    min-width: 90vw;
+    min-width: 90%;
     max-width: 480px;
     z-index: 1;
 }
@@ -87,7 +87,7 @@
     .carousel-about {
         align-content: flex-start;
         align-items: flex-start;
-        left: 10vw;
+        left: 10%;
         text-align: left;
         gap: 1rem;
     }

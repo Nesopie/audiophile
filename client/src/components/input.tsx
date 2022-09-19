@@ -40,8 +40,6 @@ const Input = ({
         pattern: () => "Wrong format",
     };
 
-    console.log("hi");
-
     return (
         <div>
             <div className="input-meta">

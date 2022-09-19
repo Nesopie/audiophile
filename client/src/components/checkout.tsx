@@ -7,21 +7,23 @@ import "./_styles/checkout.css";
 
 const Checkout = (): JSX.Element => {
     return (
-        <div className="checkout-page">
-            <Header category="" />
-            <div className="checkout-container">
-                <Forms />
-                <CheckoutSummary>
-                    <button
-                        type="submit"
-                        className={`orange button`}
-                        form="checkout"
-                    >
-                        CONTINUE & PAY
-                    </button>
-                </CheckoutSummary>
+        <div className="page">
+            <div className="checkout-page">
+                <Header category="" />
+                <div className="checkout-container">
+                    <Forms />
+                    <CheckoutSummary>
+                        <button
+                            type="submit"
+                            className={`orange button`}
+                            form="checkout"
+                        >
+                            CONTINUE & PAY
+                        </button>
+                    </CheckoutSummary>
+                </div>
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 };

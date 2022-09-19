@@ -1,7 +1,11 @@
 @import url("../../utils/base.css");
 
+.product-overview {
+    width: 90%;
+}
+
 .product-overview img {
-    max-width: 90vw;
+    max-width: 100%;
     border-radius: 10px;
 }
 
@@ -11,8 +15,7 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    max-width: 90vw;
-    margin: 0 auto;
+    max-width: 100%;
     gap: 2rem;
 }
 
@@ -82,9 +85,12 @@
 }
 
 @media screen and (min-width: 480px) {
+    .product-overview {
+        width: 80%;
+    }
+
     .product-overview > div > div > div:first-child {
         display: grid;
-        width: 80vw;
         grid-template-columns: 9fr 11fr;
         grid-gap: 2rem;
         margin: 0 auto;
@@ -116,10 +122,6 @@
         line-height: 1.6rem;
     }
 
-    .product-about {
-        width: 80vw;
-    }
-
     .product-about h3 {
         margin: 0;
     }
@@ -135,7 +137,6 @@
 
     .gallery {
         display: grid;
-        width: 80vw;
         grid-template-columns: 10fr 14fr;
         grid-gap: 1rem;
     }
@@ -165,7 +166,6 @@
 
     .product-overview > div > div > div:nth-child(2) {
         display: grid;
-        width: 80vw;
         grid-template-columns: 7fr 3fr;
         gap: 2rem;
     }

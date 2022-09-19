@@ -9,7 +9,10 @@ import Footer from "./footer";
 
 const Homepage = (): JSX.Element => {
     return (
-        <div style={{ position: "relative" }}>
+        <div
+            style={{ position: "relative" }}
+            className="page"
+        >
             <Header category={undefined} />
             <Carousel />
             <div className="homepage">

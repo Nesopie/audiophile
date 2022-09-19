@@ -1,14 +1,14 @@
-import { Gallery, Images, Includes } from "../types";
+import { Gallery, Images, Includes, User } from "../types";
 import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
-import { store } from "..";
 import Button from "./button";
 import ItemCounter from "./itemCounter";
 import userService from "../services/users";
+import { store } from "..";
 
 import "./_styles/productOverview.css";
 
@@ -43,8 +43,12 @@ const ProductOverview = ({
             price,
             quantity,
         };
-        const cart = store.getState().cart;
+
+        console.log(store.getState());
+
+        const { cart } = store.getState();
         let index = -1;
+        console.log(cart);
 
         cart.forEach((cartItem, idx) => {
             if (cartItem.name === name) index = idx;

@@ -4,12 +4,13 @@
     display: flex;
     justify-self: flex-start;
     align-self: flex-start;
-    margin-left: 5vw;
+    margin-left: 5%;
     gap: 1.5rem;
     font-weight: 500;
     font-size: 1.1rem;
     margin-top: -4rem;
     margin-bottom: -4rem;
+    width: 100%;
 }
 
 .product-options:hover {
@@ -22,6 +23,6 @@
 
 @media screen and (min-width: 480px) {
     .product-options {
-        margin-left: 10vw;
+        padding-left: 5%;
     }
 }

@@ -48,9 +48,11 @@ const LoginForm = (): JSX.Element => {
             const data = await userService.getUserData(user);
             dispatch({
                 type: "SET_USER",
-                username: data.username,
-                cart: data.cart,
-                token: data.token,
+                payload: {
+                    username: data.username,
+                    cart: data.cart,
+                    token: data.token,
+                },
             });
             window.location.href = "../";
         } catch (error: unknown) {

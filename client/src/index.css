@@ -24,3 +24,9 @@ img {
 a {
     z-index: 101;
 }
+
+.page > * {
+    width: 100vw;
+    max-width: 1440px;
+    margin: 0 auto;
+}

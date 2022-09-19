@@ -2,7 +2,7 @@ import { Modal } from "@mui/material";
 import React from "react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useSelector } from "react-redux";
-import { RootState } from "..";
+import { RootState } from "../reducers/types";
 import helper from "../utils/helper";
 import Button from "./button";
 

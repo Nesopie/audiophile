@@ -8,10 +8,10 @@ import Header from "./header";
 import ProductCard from "./productCard";
 import ProductCategory from "./productCategory";
 import BestGear from "./bestGear";
-import "./_styles/productsPage.css";
 import Footer from "./footer";
-
 import productService from "../services/products";
+
+import "./_styles/productsPage.css";
 
 const ProductsPage = (): JSX.Element => {
     const [products, setProducts] = useState<Array<Products>>([]);
@@ -55,50 +55,43 @@ const ProductsPage = (): JSX.Element => {
         });
     }, [products]);
 
-    function quickLogger<T extends {}>(obj: T) {
-        console.log(obj);
-        return false;
-    }
-
-    useEffect(() => {
-        console.log(loading);
-    }, [loading]);
-
     return (
-        <div className="product-page-container">
-            <Header category={`${category}`} />
-            <section className="product-container">
-                {loading ? (
-                    <Bars
-                        height={"20em"}
-                        fill={"#d87c4a"}
-                    />
-                ) : (
-                    products.map((product) => {
-                        return (
-                            <ProductCard
-                                key={product._id}
-                                id={`${product._id}`}
-                                imagePath={require(`${
-                                    isMobile
-                                        ? product.categoryImage.mobile
-                                        : isTablet
-                                        ? product.categoryImage.tablet
-                                        : product.categoryImage.desktop
-                                }`)}
-                                newProduct={product.new}
-                                productName={product.name}
-                                productDescription={product.description}
-                                category={category}
-                                slug={product.slug}
-                            />
-                        );
-                    })
-                )}
-            </section>
-            <ProductCategory />
-            <BestGear />
-            <Footer />
+        <div className="page">
+            <div className="product-page-container">
+                <Header category={`${category}`} />
+                <section className="product-container">
+                    {loading ? (
+                        <Bars
+                            height={"20em"}
+                            fill={"#d87c4a"}
+                        />
+                    ) : (
+                        products.map((product) => {
+                            return (
+                                <ProductCard
+                                    key={product._id}
+                                    id={`${product._id}`}
+                                    imagePath={require(`${
+                                        isMobile
+                                            ? product.categoryImage.mobile
+                                            : isTablet
+                                            ? product.categoryImage.tablet
+                                            : product.categoryImage.desktop
+                                    }`)}
+                                    newProduct={product.new}
+                                    productName={product.name}
+                                    productDescription={product.description}
+                                    category={category}
+                                    slug={product.slug}
+                                />
+                            );
+                        })
+                    )}
+                </section>
+                <ProductCategory />
+                <BestGear />
+                <Footer />
+            </div>
         </div>
     );
 };

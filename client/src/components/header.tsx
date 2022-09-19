@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import CartIcon from "./assets/shared/desktop/icon-cart.svg";
 import CartSummary from "./cartSummary";
-import { RootState } from "../index";
+import { RootState } from "../reducers/types";
 
 import "./_styles/header.css";
 
